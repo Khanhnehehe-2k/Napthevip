@@ -8,8 +8,8 @@ import base64
 import time
 import random
 from datetime import datetime
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -27,13 +27,23 @@ TELEGRAM_BOT_TOKEN = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"  # THAY BẰNG TOKE
 TELEGRAM_CHAT_ID = "123456789"  # THAY BẰNG CHAT ID CỦA MÀY
 
 # ==================== CRYPTO HELPERS ====================
+def pad(data, block_size=16):
+    padding_len = block_size - (len(data) % block_size)
+    return data + bytes([padding_len] * padding_len)
+
+def unpad(data):
+    padding_len = data[-1]
+    return data[:-padding_len]
+
 def aes_encrypt(data: bytes, key=AES_KEY, iv=AES_IV) -> bytes:
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    return cipher.encrypt(pad(data, AES.block_size))
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    encryptor = cipher.encryptor()
+    return encryptor.update(pad(data)) + encryptor.finalize()
 
 def aes_decrypt(data: bytes, key=AES_KEY, iv=AES_IV) -> bytes:
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    return unpad(cipher.decrypt(data), AES.block_size)
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    decryptor = cipher.decryptor()
+    return unpad(decryptor.update(data) + decryptor.finalize())
 
 def parse_proto(data: bytes) -> dict:
     result = {}
