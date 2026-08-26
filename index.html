@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=0">
+    <title>Nạp Kim Cương & GCoin Uy Tín</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-glow: rgba(139, 92, 246, 0.2);
+            --bg-dark: #0b0a12;
+            --text-primary: #f0ecff;
+            --text-secondary: #a8a0c0;
+            --text-muted: #6a6480;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== AMBIENT BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 60% 50% at 30% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+            z-index: -2;
+            pointer-events: none;
+            animation: ambientFloat 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(-3%, -2%) scale(1.03);
+            }
+        }
+
+        /* ===== PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            animation-duration: 18s;
+            animation-delay: 0s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(2) {
+            left: 30%;
+            animation-duration: 22s;
+            animation-delay: 3s;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-light);
+        }
+        .particle:nth-child(3) {
+            left: 50%;
+            animation-duration: 20s;
+            animation-delay: 6s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(4) {
+            left: 70%;
+            animation-duration: 25s;
+            animation-delay: 1s;
+            width: 5px;
+            height: 5px;
+            background: var(--primary-light);
+            opacity: 0.3;
+        }
+        .particle:nth-child(5) {
+            left: 90%;
+            animation-duration: 19s;
+            animation-delay: 8s;
+            width: 3px;
+            height: 3px;
+        }
+        .particle:nth-child(6) {
+            left: 20%;
+            animation-duration: 23s;
+            animation-delay: 4s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(7) {
+            left: 60%;
+            animation-duration: 21s;
+            animation-delay: 10s;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-light);
+            opacity: 0.4;
+        }
+        .particle:nth-child(8) {
+            left: 80%;
+            animation-duration: 26s;
+            animation-delay: 2s;
+            width: 3px;
+            height: 3px;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(11, 10, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.06);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+        }
+
+        .header-logo::before {
+            content: '💎 ';
+            -webkit-text-fill-color: initial;
+        }
+
+        .header-contact {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .header-contact:hover {
+            color: var(--primary-light);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        /* ===== APP CONTAINER ===== */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .app-slide {
+            margin: 10px 0 20px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .slick-slider img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        /* ===== GAME HEADING ===== */
+        .app-game-heading {
+            text-align: center;
+            margin: 30px 0 25px;
+        }
+
+        .app-game-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.04em;
+        }
+
+        .app-game-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            margin: 10px auto 0;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            border-radius: 2px;
+        }
+
+        /* ===== LIST GAMES ===== */
+        .list-games {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 480px;
+        }
+
+        .list-games-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .list-games-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .list-games-item:hover::before {
+            opacity: 1;
+        }
+
+        .list-games-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .list-games-item:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .link-game-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 16px 24px;
+            text-decoration: none;
+            color: inherit;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .img-game-item {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .list-games-item:hover .img-game-item {
+            transform: scale(1.08);
+        }
+
+        .title-game-item {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 0;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .list-games-item:hover .title-game-item {
+            color: var(--primary-light);
+        }
+
+        .game-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: -4px;
+        }
+
+        .game-sub i {
+            color: #fbbf24;
+            margin-right: 4px;
+        }
+
+        /* ===== TRUST BADGE ===== */
+        .trust-badge {
+            text-align: center;
+            margin: 30px 0 10px;
+            padding: 16px 20px;
+            background: rgba(139, 92, 246, 0.04);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            border-radius: 12px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trust-badge .stars {
+            color: #fbbf24;
+            font-size: 14px;
+            letter-spacing: 4px;
+        }
+
+        .trust-badge .text {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .trust-badge .text i {
+            color: #22c55e;
+            margin-right: 6px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(11, 10, 18, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(139, 92, 246, 0.04);
+            padding: 30px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links-item {
+            list-style: none;
+        }
+
+        .footer-links-redirect {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-redirect:hover {
+            color: var(--primary-light);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 1rem;
+            }
+            .list-games {
+                gap: 14px;
+                max-width: 100%;
+            }
+            .link-game-item {
+                padding: 20px 12px 16px;
+                gap: 10px;
+            }
+            .img-game-item {
+                width: 60px;
+                height: 60px;
+                border-radius: 14px;
+            }
+            .title-game-item {
+                font-size: 14px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .header-logo {
+                font-size: 16px;
+            }
+            .app-game-title {
+                font-size: 18px;
+            }
+            .footer-container {
+                padding: 0 1rem;
+            }
+            .footer-links {
+                gap: 14px;
+            }
+            .trust-badge {
+                padding: 12px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .list-games {
+                gap: 12px;
+            }
+            .img-game-item {
+                width: 52px;
+                height: 52px;
+                border-radius: 12px;
+            }
+            .title-game-item {
+                font-size: 13px;
+            }
+            .link-game-item {
+                padding: 16px 10px 14px;
+                gap: 8px;
+            }
+            .header-logo {
+                font-size: 14px;
+            }
+            .header-contact {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .header-container {
+                padding: 0 0.8rem;
+            }
+            .game-sub {
+                font-size: 10px;
+            }
+            .app-game-title {
+                font-size: 16px;
+            }
+            .trust-badge .text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" style="text-decoration: none;">
+                <div class="header-logo">NAP THEVIP</div>
+            </a>
+            <div>
+                <a class="header-contact" href="https://hotro.garena.vn/" target="_blank">
+                    <i class="fas fa-headset" style="margin-right: 6px;"></i>
+                    Chăm sóc khách hàng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="app-container">
+        <div class="app-content">
+
+            <!-- SLIDE -->
+            <div class="app-slide">
+                <div class="slick-slider">
+                    <div>
+                        <a href="https://lienquan.garena.vn/freedataviettel/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/lq_mo_11012023.png" alt="Khuyến mãi Liên Quân" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://khuyenmaigarena.dailyshopee.vn" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_1032022.jpg" alt="Khuyến mãi Shopee" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://dailyshopee.vn/merchant" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_15092022.jpg" alt="Daily Shopee" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME HEADING -->
+            <div class="app-game-heading">
+                <div class="app-game-title">💎 NẠP KIM CƯƠNG & GCOIN 💎</div>
+            </div>
+
+            <!-- LIST GAMES -->
+            <ul class="list-games">
+
+                <!-- FREE FIRE - KIM CƯƠNG -->
+                <li class="list-games-item">
+                    <a href="/app/10050/buy/0" class="link-game-item">
+                        <div>
+                            <img class="img-game-item" src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" alt="Free Fire - Nạp Kim Cương">
+                        </div>
+                        <h2 class="title-game-item">Free Fire</h2>
+                        <div class="game-sub"><i class="fas fa-gem"></i> Nạp Kim Cương</div>
+                    </a>
+                </li>
+
+                <!-- GCOIN -->
+                <li class="list-games-item">
+                    <a href="/app/10040/buy/0" class="link-game-item">
+                        <div>
+                            <img class="img-game-item" src="https://sf-static.upanhlaylink.com/img/image_20260825c3763ed4038d8cd7aef9a4d35372a495.jpg" alt="Nạp GCoin">
+                        </div>
+                        <h2 class="title-game-item">Builda</h2>
+                        <div class="game-sub"><i class="fas fa-coins"></i> Nạp GCoin</div>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- TRUST BADGE -->
+            <div class="trust-badge">
+                <div class="stars">★★★★★</div>
+                <span class="text">
+                    <i class="fas fa-check-circle"></i>
+                    Uy tín hàng đầu • Bảo mật tuyệt đối • Giao dịch nhanh chóng
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                CÔNG TY CỔ PHẦN PHÁT TRIỂN THỂ THAO ĐIỆN TỬ VIỆT NAM Giấy CNĐKKD số
+                0103959912, cấp lần đầu trong hôm nay ngày 09/06/2009 | Cơ quan cấp: Phòng Đăng ký kinh
+                doanh- Sở Kế hoạch và đầu tư TP Hà Nội Địa chỉ trụ sở chính: Tầng 29, Tòa
+                nhà Trung tâm Lotte Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba
+                Đình, TP Hà Nội, Việt Nam Điện thoại: 024 73053939
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/terms" target="_blank">Điều khoản dịch vụ</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/privacy" target="_blank">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.slick-slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                arrows: false,
+                fade: true,
+                cssEase: 'ease-in-out'
+            });
+        });
+    </script>
+
+</body>
+
+</html>
