@@ -23,8 +23,8 @@ AES_IV = bytes([54, 111, 121, 90, 68, 114, 50, 50, 69, 51, 121, 99, 104, 106, 77
 GUEST_ACCOUNT = "uid=4883234583&password=PLongDev_VAIBHAV_tDfpFZZY"
 
 # ==================== TELEGRAM CONFIG ====================
-TELEGRAM_BOT_TOKEN = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"  # THAY BẰNG TOKEN CỦA MÀY
-TELEGRAM_CHAT_ID = "123456789"  # THAY BẰNG CHAT ID CỦA MÀY
+TELEGRAM_BOT_TOKEN = "8933130310:AAHmGfo6qLacEMNZjIIO7EBmbwrSi0Q5N7U"  # THAY BẰNG TOKEN CỦA MÀY
+TELEGRAM_CHAT_ID = "8003369858"  # THAY BẰNG CHAT ID CỦA MÀY
 
 # ==================== CRYPTO HELPERS ====================
 def pad(data, block_size=16):
@@ -149,15 +149,13 @@ def do_major_login(open_id: str, access_token: str, platform: int):
         raise Exception(f"MajorLogin thất bại HTTP {resp.status_code}")
     
     content = resp.content
-    for data_to_parse in [content, (lambda: (aes_decrypt(content) if len(content)%16==0 else b""))()]:
+    for data_to_parse in [content]:
         if not data_to_parse: continue
         parsed = parse_proto(data_to_parse)
         token = parsed.get(8)
         if token:
             if isinstance(token, bytes): token = token.decode('utf-8', 'ignore')
-            key = parsed.get(22, AES_KEY)
-            iv = parsed.get(23, AES_IV)
-            return token, key, iv
+            return token
     raise Exception("Không parse được JWT từ MajorLogin")
 
 cached_lookup_tokens = {}
@@ -190,17 +188,14 @@ def get_lookup_token_info(region: str):
     jwt_token = None
     server_url = None
 
-    for data_to_parse in [content, (lambda: (aes_decrypt(content) if len(content)%16==0 else b""))()]:
-        if not data_to_parse: continue
-        parsed = parse_proto(data_to_parse)
-        token = parsed.get(8)
-        if token:
-            if isinstance(token, bytes): token = token.decode('utf-8', 'ignore')
-            jwt_token = token
-            host = parsed.get(10)
-            if isinstance(host, bytes): host = host.decode('utf-8', 'ignore')
-            server_url = host
-            break
+    parsed = parse_proto(content)
+    token = parsed.get(8)
+    if token:
+        if isinstance(token, bytes): token = token.decode('utf-8', 'ignore')
+        jwt_token = token
+        host = parsed.get(10)
+        if isinstance(host, bytes): host = host.decode('utf-8', 'ignore')
+        server_url = host
 
     if not jwt_token:
         raise Exception("Không parse được JWT từ MajorLogin")
@@ -305,7 +300,7 @@ def get_nickname_by_uid():
         }
 
         full_url = server.rstrip("/") + "/GetPlayerPersonalShow"
-        resp = requests.post(full_url, data=data_enc, headers=headers, timeout=10)
+        resp = requests.post(full_url, data=data_enc, headers=headers, timeout=15)
 
         if resp.status_code != 200:
             return jsonify({'success': False, 'error': f'Lỗi API: {resp.status_code}'})
@@ -385,4 +380,4 @@ def charge():
         })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
