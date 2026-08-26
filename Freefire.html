@@ -182,464 +182,6 @@
             }
         }
 
-        /* ============================================================
-                   LOGIN OVERLAY
-                   ============================================================ */
-        #login-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 10, 18, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.8s ease;
-        }
-
-        #login-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        #login-overlay::before {
-            content: '';
-            position: absolute;
-            width: 70vw;
-            height: 70vw;
-            top: -30%;
-            left: -20%;
-            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            animation: glowPulse 4s ease-in-out infinite alternate;
-        }
-
-        #login-overlay::after {
-            content: '';
-            position: absolute;
-            width: 60vw;
-            height: 60vw;
-            bottom: -30%;
-            right: -20%;
-            background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            animation: glowPulse 5s ease-in-out infinite alternate-reverse;
-        }
-
-        @keyframes glowPulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-        }
-
-        .login-box {
-            position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            border-radius: 28px;
-            padding: 52px 56px;
-            max-width: 460px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 60px rgba(139, 92, 246, 0.05);
-            z-index: 1;
-            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes slideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .login-box .brand-icon {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 6px;
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .login-box .brand-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 22px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6, #c084fc, #8b5cf6);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.06em;
-            margin-bottom: 6px;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .login-box .brand-sub {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 30px;
-            letter-spacing: 0.02em;
-        }
-
-        .login-box .brand-sub span {
-            color: var(--primary-light);
-            font-weight: 600;
-        }
-
-        .login-box .input-group {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        .login-box .input-group input {
-            width: 100%;
-            padding: 18px 22px;
-            border-radius: 14px;
-            border: 1px solid rgba(139, 92, 246, 0.12);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 18px;
-            font-family: 'Orbitron', monospace;
-            font-weight: 600;
-            letter-spacing: 3px;
-            outline: none;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .login-box .input-group input::placeholder {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-weight: 400;
-            font-size: 15px;
-            color: #4a4460;
-            letter-spacing: 1px;
-        }
-
-        .login-box .input-group input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.08), inset 0 0 40px rgba(139, 92, 246, 0.03);
-        }
-
-        .login-box .input-group input:focus::placeholder {
-            opacity: 0.2;
-        }
-
-        .login-box .input-group .loading-spinner {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: none;
-        }
-
-        .login-box .input-group .loading-spinner.show {
-            display: block;
-        }
-
-        .login-box .input-group .loading-spinner i {
-            color: var(--primary-light);
-            font-size: 22px;
-        }
-
-        .login-box .nickname-preview {
-            margin-top: 16px;
-            padding: 14px 20px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.02));
-            border: 1px solid rgba(139, 92, 246, 0.12);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .login-box .nickname-preview.show {
-            display: flex;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .login-box .nickname-preview .check-icon {
-            color: #22c55e;
-            font-size: 20px;
-            filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.3));
-        }
-
-        .login-box .nickname-preview .preview-label {
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-weight: 400;
-        }
-
-        .login-box .nickname-preview .preview-name {
-            color: #fff;
-            font-size: 20px;
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            background: linear-gradient(135deg, #8b5cf6, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .login-box .nickname-preview .preview-uid {
-            color: var(--text-muted);
-            font-size: 12px;
-            font-family: 'Orbitron', monospace;
-            letter-spacing: 0.05em;
-            background: rgba(139, 92, 246, 0.08);
-            padding: 3px 12px;
-            border-radius: 6px;
-            border: 1px solid rgba(139, 92, 246, 0.06);
-        }
-
-        .login-box .error-msg {
-            margin-top: 12px;
-            color: #ef4444;
-            font-size: 13px;
-            font-weight: 500;
-            display: none;
-        }
-
-        .login-box .error-msg.show {
-            display: block;
-            animation: shake 0.4s ease;
-        }
-
-        @keyframes shake {
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-8px);
-            }
-            75% {
-                transform: translateX(8px);
-            }
-        }
-
-        .login-box .btn-login {
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: 'Be Vietnam Pro', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            letter-spacing: 0.04em;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-box .btn-login::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .login-box .btn-login:hover:not(:disabled)::before {
-            opacity: 1;
-        }
-
-        .login-box .btn-login:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.35), 0 0 60px rgba(139, 92, 246, 0.1);
-        }
-
-        .login-box .btn-login:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .login-box .btn-login i {
-            margin-right: 10px;
-        }
-
-        .login-box .footer-text {
-            margin-top: 20px;
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
-
-        .login-box .footer-text .highlight {
-            color: var(--primary-light);
-        }
-
-        /* ============================================================
-                   MAIN CONTENT
-                   ============================================================ */
-        #main-content {
-            display: block;
-            filter: blur(0px);
-            transition: filter 0.8s ease, opacity 0.8s ease;
-            opacity: 1;
-        }
-
-        #main-content.blurred {
-            filter: blur(6px);
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        #main-content.show {
-            filter: blur(0px);
-            pointer-events: auto;
-            opacity: 1;
-        }
-
-        .user-badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(139, 92, 246, 0.12);
-            border-radius: 16px;
-            padding: 12px 24px;
-            display: none;
-            align-items: center;
-            gap: 16px;
-            color: #fff;
-            font-size: 14px;
-            margin-bottom: 18px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-            animation: slideDown 0.5s ease;
-            width: fit-content;
-        }
-
-        @keyframes slideDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .user-badge .avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: 'Orbitron', monospace;
-            color: #fff;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
-        }
-
-        .user-badge .user-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .user-badge .user-info .user-name {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 0.04em;
-            background: linear-gradient(135deg, #8b5cf6, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .user-badge .user-info .user-uid {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-family: 'Orbitron', monospace;
-            letter-spacing: 0.05em;
-        }
-
-        .user-badge .logout-btn {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.12);
-            color: #ef4444;
-            padding: 6px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Be Vietnam Pro', sans-serif;
-        }
-
-        .user-badge .logout-btn:hover {
-            background: rgba(239, 68, 68, 0.18);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
-        }
-
         /* ===== HEADER ===== */
         .header {
             background: rgba(11, 10, 18, 0.6);
@@ -790,12 +332,7 @@
             border-radius: 2px;
         }
 
-        /* ===== RECHARGE ===== */
-        .recharge {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
+        /* ===== NOTIFICATION ===== */
         .notification {
             margin-bottom: 18px;
         }
@@ -825,61 +362,14 @@
             color: #ef4444;
         }
 
-        /* ===== RECHARGE TYPE ===== */
-        .recharge-type {
-            margin-bottom: 20px;
+        /* ============================================================
+                   RECHARGE FORM
+                   ============================================================ */
+        .recharge {
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .recharge-type__body {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .recharge-type__item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 90px;
-            justify-content: center;
-        }
-
-        .recharge-type__item:hover {
-            border-color: rgba(139, 92, 246, 0.2);
-            background: rgba(139, 92, 246, 0.04);
-        }
-
-        .recharge-type__item.active {
-            border-color: var(--primary);
-            background: rgba(139, 92, 246, 0.06);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
-        }
-
-        .recharge-type__img {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .recharge-type__img img {
-            height: 28px;
-            width: auto;
-            border-radius: 4px;
-        }
-
-        .recharge-type__arrow {
-            color: var(--text-muted);
-            font-size: 11px;
-        }
-
-        /* ===== RECHARGE FORM ===== */
         .recharge-form {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(139, 92, 246, 0.06);
@@ -887,127 +377,27 @@
             padding: 24px;
         }
 
-        .recharge-form__content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .recharge-form__left {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .recharge-form__right {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .recharge-form__submit--title {
-            font-family: 'Orbitron', monospace;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 0.02em;
-        }
-
-        .recharge-form__submit--title span {
-            color: var(--primary-light);
-        }
-
-        /* ===== RECHARGE AMOUNT ===== */
-        .recharge-amount__heading {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .recharge-amount__table {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .recharge-amount__item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .recharge-amount__item:hover {
-            border-color: rgba(139, 92, 246, 0.15);
-            background: rgba(139, 92, 246, 0.03);
-        }
-
-        .recharge-amount__item.active {
-            border-color: var(--primary);
-            background: rgba(139, 92, 246, 0.06);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
-        }
-
-        .recharge-amount__radio {
-            display: none;
-        }
-
-        .recharge-amount__price {
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        .recharge-amount__pointReceive {
-            color: var(--text-secondary);
-            font-size: 12px;
-            text-align: right;
-        }
-
-        .recharge-amount__pointReceive span {
-            color: #22c55e;
-            font-weight: 600;
-        }
-
-        /* ===== FORM ===== */
-        .recharge-form__submit--body {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
         .recharge-form__group {
             display: flex;
             flex-direction: column;
             gap: 4px;
+            margin-bottom: 14px;
         }
 
         .recharge-form__label {
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
-        }
-
-        .recharge-form__control {
-            position: relative;
         }
 
         .recharge-form__input {
             width: 100%;
-            padding: 10px 14px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             background: rgba(0, 0, 0, 0.25);
             color: var(--text-primary);
-            font-size: 13px;
+            font-size: 14px;
             font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             transition: all 0.3s ease;
             outline: none;
@@ -1027,14 +417,232 @@
             cursor: pointer;
         }
 
-        /* Ẩn phần chọn cách đăng nhập - Freefire chỉ dùng UID */
-        #account_type_group {
-            display: none !important;
+        .recharge-form__input select option {
+            background: var(--bg-dark);
+            color: var(--text-primary);
         }
 
+        /* ===== LOGIN INLINE ===== */
+        .login-inline-box {
+            background: rgba(139, 92, 246, 0.04);
+            border: 1px solid rgba(139, 92, 246, 0.08);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .login-inline-box .login-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .login-inline-box .login-title .title-form {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .login-inline-box .input-group-hihi {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-inline-box .input-group-hihi .recharge-form__input {
+            flex: 1;
+        }
+
+        .login-inline-box .btn-verify-uid {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .login-inline-box .btn-verify-uid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .login-inline-box .btn-verify-uid:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-inline-box .inline-login-error {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* ===== USER INFO DISPLAY ===== */
+        .user-info-display {
+            display: none;
+            background: rgba(139, 92, 246, 0.04);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+        }
+
+        .user-info-display.show {
+            display: block;
+        }
+
+        .user-info-display .user-info-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .user-info-display .avatar-small {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            background: var(--bg-dark);
+        }
+
+        .user-info-display .user-name-text {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .user-info-display .user-id-text {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .user-info-display .logout-btn-small {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            background: rgba(239, 68, 68, 0.06);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: auto;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .user-info-display .logout-btn-small:hover {
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        /* ===== RECHARGE CONTENT (LOCKED) ===== */
+        .recharge-content {
+            transition: opacity 0.3s ease;
+        }
+
+        .recharge-content.locked {
+            opacity: 0.4;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .recharge-content.locked::after {
+            content: '🔒 Vui lòng đăng nhập để nạp thẻ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 700;
+            background: rgba(11, 10, 18, 0.88);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            width: 85%;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== BẢNG GIÁ ===== */
+        .recharge-amount__heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .recharge-amount__table {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .recharge-amount__item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .recharge-amount__item:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .recharge-amount__item.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.08);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .recharge-amount__radio {
+            display: none;
+        }
+
+        .recharge-amount__price {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .recharge-amount__pointReceive {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-align: right;
+        }
+
+        .recharge-amount__pointReceive span {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        /* ===== FORM ===== */
         .error-message {
             color: #ef4444;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             padding: 4px 0;
             min-height: 24px;
@@ -1042,41 +650,10 @@
 
         .success-message {
             color: #22c55e;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             padding: 4px 0;
             min-height: 24px;
-        }
-
-        .recharge-form__button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 700;
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.02em;
-            margin-top: 6px;
-        }
-
-        .recharge-form__button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-        }
-
-        .recharge-form__button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .hidden {
-            display: none !important;
         }
 
         .sumbit_loading {
@@ -1092,6 +669,114 @@
         .sumbit_loading i {
             color: var(--primary-light);
             font-size: 24px;
+        }
+
+        .recharge-form__button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            margin-top: 6px;
+        }
+
+        .recharge-form__button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .recharge-form__button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== USER BADGE ===== */
+        .user-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(139, 92, 246, 0.12);
+            border-radius: 16px;
+            padding: 12px 24px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+        }
+
+        .user-badge.show {
+            display: inline-flex;
+        }
+
+        .user-badge .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .user-badge .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .user-badge .user-info .user-name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-badge .user-info .user-uid {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        .user-badge .logout-btn {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            padding: 6px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .user-badge .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
         }
 
         /* ===== FOOTER ===== */
@@ -1141,18 +826,12 @@
             color: var(--primary-light);
         }
 
-        .recharge-form__line {
-            display: none;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
         @media (max-width: 768px) {
             .app-container {
                 padding: 1rem;
-            }
-            .recharge-form__content {
-                grid-template-columns: 1fr;
-                gap: 20px;
             }
             .app-game-title {
                 font-size: 20px;
@@ -1167,23 +846,31 @@
             .header-logo {
                 font-size: 16px;
             }
-            .recharge-type__body {
-                gap: 6px;
-            }
-            .recharge-type__item {
-                padding: 6px 10px;
-                min-width: 70px;
-                font-size: 11px;
-            }
-            .recharge-type__img img {
-                height: 22px;
-            }
             .recharge-form {
                 padding: 16px;
             }
-            .recharge-amount__item {
-                padding: 6px 10px;
-                font-size: 12px;
+            .login-inline-box .input-group-hihi {
+                flex-direction: column;
+            }
+            .login-inline-box .btn-verify-uid {
+                width: 100%;
+                justify-content: center;
+                display: flex;
+            }
+            .user-info-display .user-info-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .user-info-display .logout-btn-small {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .recharge-content.locked::after {
+                font-size: 14px;
+                padding: 16px 20px;
+                width: 90%;
             }
             .footer-container {
                 padding: 0 1rem;
@@ -1191,8 +878,12 @@
             .footer-links {
                 gap: 14px;
             }
-            .login-box {
-                padding: 36px 30px;
+            .user-badge {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 12px 16px;
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -1215,18 +906,18 @@
                 padding: 0 0.8rem;
             }
             .recharge-form__input {
-                font-size: 12px;
-                padding: 8px 12px;
+                font-size: 13px;
+                padding: 10px 14px;
             }
             .recharge-amount__price {
-                font-size: 12px;
+                font-size: 13px;
             }
             .recharge-amount__pointReceive {
-                font-size: 11px;
+                font-size: 12px;
             }
             .recharge-form__button {
-                font-size: 13px;
-                padding: 12px;
+                font-size: 14px;
+                padding: 14px;
             }
             .notification div {
                 font-size: 12px;
@@ -1236,30 +927,13 @@
                 font-size: 12px;
             }
             .recharge-amount__heading {
-                font-size: 11px;
+                font-size: 12px;
             }
-            .login-box {
-                padding: 32px 24px;
-                margin: 0 16px;
-                border-radius: 20px;
+            .login-inline-box {
+                padding: 12px;
             }
-            .login-box .brand-title {
-                font-size: 18px;
-            }
-            .login-box .input-group input {
-                font-size: 16px;
-                padding: 14px 16px;
-                letter-spacing: 1px;
-            }
-            .login-box .nickname-preview .preview-name {
-                font-size: 16px;
-            }
-            .user-badge {
-                flex-wrap: wrap;
-                gap: 10px;
-                padding: 12px 16px;
-                width: 100%;
-                justify-content: center;
+            .login-inline-box .login-title .title-form {
+                font-size: 13px;
             }
         }
     </style>
@@ -1281,323 +955,249 @@
         <div class="particle"></div>
     </div>
 
-    <!-- ===== MAIN CONTENT (PHÍA SAU) ===== -->
-    <div id="main-content" class="blurred">
-        <div class="app-main">
-            <header class="header">
-                <div class="header-container">
-                    <a href="/" style="text-decoration: none;">
-                        <div class="header-logo">NAP THEVIP</div>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" style="text-decoration: none;">
+                <div class="header-logo">NAP THEVIP</div>
+            </a>
+            <div>
+                <a class="header-contact" href="https://hotro.garena.vn/" target="_blank">
+                    <i class="fas fa-headset" style="margin-right: 6px;"></i>
+                    Chăm sóc khách hàng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="app-container">
+        <div class="app-content">
+
+            <!-- BACK HOMEPAGE -->
+            <div class="back-homepage">
+                <div class="back-homepage-container">
+                    <a class="back-homepage-link" href="/">
+                        <div class="back-arrow-container">
+                            <div class="back-arrow-left"></div>
+                        </div>
+                        <div>Quay lại Trang chủ</div>
                     </a>
+                </div>
+            </div>
+
+            <!-- USER BADGE -->
+            <div class="user-badge" id="user-badge">
+                <div class="avatar" id="user-avatar">P</div>
+                <div class="user-info">
+                    <span class="user-name" id="user-name-display">Player</span>
+                    <span class="user-uid" id="user-uid-display">UID: ---</span>
+                </div>
+                <button class="logout-btn" onclick="logoutUser()">
+                    <i class="fas fa-sign-out-alt"></i> Thoát
+                </button>
+            </div>
+
+            <!-- SLIDE -->
+            <div class="app-slide">
+                <div class="slick-slider">
                     <div>
-                        <a class="header-contact" href="https://hotro.garena.vn/" target="_blank">
-                            <i class="fas fa-headset" style="margin-right: 6px;"></i>
-                            Chăm sóc khách hàng
+                        <a href="https://lienquan.garena.vn/freedataviettel/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/lq_mo_11012023.png" alt="Khuyến mãi Liên Quân" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://khuyenmaigarena.dailyshopee.vn" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_1032022.jpg" alt="Khuyến mãi Shopee" style="width:100%; border-radius:16px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://dailyshopee.vn/merchant" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_15092022.jpg" alt="Daily Shopee" style="width:100%; border-radius:16px;">
                         </a>
                     </div>
                 </div>
-            </header>
+            </div>
 
-            <div class="app-container">
-                <div class="app-content">
+            <!-- GAME HEADING -->
+            <div class="app-game-heading">
+                <div class="app-game-group">
+                    <img class="app-game-logo" src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" alt="Free Fire" />
+                    <div class="app-game-title">Free Fire</div>
+                </div>
+                <div class="app-game-line"></div>
+            </div>
 
-                    <!-- BACK HOMEPAGE -->
-                    <div class="back-homepage">
-                        <div class="back-homepage-container">
-                            <a class="back-homepage-link" href="/">
-                                <div class="back-arrow-container">
-                                    <div class="back-arrow-left"></div>
-                                </div>
-                                <div>Quay lại Trang chủ</div>
-                            </a>
+            <!-- RECHARGE -->
+            <div class="recharge">
+
+                <!-- NOTIFICATION -->
+                <div class="notification">
+                    <div>
+                        🎁 <b>Phúc lợi nạp Kim Cương:</b> Nhận ngay <span class="highlight">SCAR Cá Mập Đen</span> khi nạp thẻ <span class="red">lần đầu trong hôm nay</span> từ <span class="highlight">200.000đ</span> trở lên!
+                    </div>
+                </div>
+
+                <!-- FORM NẠP THẺ -->
+                <div class="recharge-form">
+
+                    <!-- ===== LOGIN INLINE ===== -->
+                    <div class="login-inline-box">
+                        <div class="login-title">
+                            <div class="title-form">🎯 ID Game người chơi</div>
+                        </div>
+                        <div class="input-group-hihi">
+                            <input type="text" class="recharge-form__input" name="uid" id="uid" placeholder="Nhập ID Game (ví dụ: 123456789)" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+                            <button class="btn-verify-uid" id="btn-verify-uid" type="button">Đăng nhập</button>
+                        </div>
+                        <div class="inline-login-error" id="inline-login-error">UID không hợp lệ</div>
+                    </div>
+
+                    <!-- ===== USER INFO DISPLAY ===== -->
+                    <div class="user-info-display" id="userInfo">
+                        <div class="user-info-content">
+                            <img class="avatar-small" id="user-avatar-small" src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" alt="Avatar">
+                            <div>
+                                <div class="user-name-text">👤 <span id="username-display">---</span></div>
+                                <div class="user-id-text">🆔 <span id="user-id-display">---</span></div>
+                            </div>
+                            <button class="logout-btn-small" onclick="logoutPlayer()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </button>
                         </div>
                     </div>
 
-                    <!-- USER BADGE -->
-                    <div class="user-badge" id="user-badge" style="display:none;">
-                        <div class="avatar" id="user-avatar">P</div>
-                        <div class="user-info">
-                            <span class="user-name" id="user-name-display">Player</span>
-                            <span class="user-uid" id="user-uid-display">UID: ---</span>
+                    <!-- ===== RECHARGE CONTENT (LOCKED WHEN NOT LOGIN) ===== -->
+                    <div class="recharge-content locked" id="rechargeContent">
+
+                        <!-- Chọn nhà mạng -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">📌 Chọn nhà mạng</div>
+                            <select class="recharge-form__input" id="loaithe" required>
+                                <option value="" style="display:none;">Vui lòng chọn loại thẻ</option>
+                                <option value="VINAPHONE">Vinaphone (Duyệt nhanh)</option>
+                                <option value="GARENA">Garena (Duyệt nhanh)</option>
+                                <option value="MOBIFONE">Mobifone (Duyệt nhanh)</option>
+                                <option value="VCOIN">VCOIN</option>
+                                <option value="VIETTEL">Viettel</option>
+                            </select>
                         </div>
-                        <button class="logout-btn" onclick="logoutUser()">
-                            <i class="fas fa-sign-out-alt"></i> Thoát
+
+                        <!-- Bảng giá quy đổi -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">💰 Số tiền muốn nạp</div>
+                            <div class="recharge-amount__heading">
+                                <div class="recharge-amount__number">Giá</div>
+                                <div class="recharge-amount__point">Nhận được</div>
+                            </div>
+                            <div class="recharge-amount__table">
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="20000" />
+                                    <div class="recharge-amount__price">20.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 180</div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="50000" />
+                                    <div class="recharge-amount__price">50.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 580 <span>(+1.160)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="100000" />
+                                    <div class="recharge-amount__price">100.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 1.190 <span>(+2.380)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="200000" />
+                                    <div class="recharge-amount__price">200.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 3.050 <span>(+7.100)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="500000" />
+                                    <div class="recharge-amount__price">500.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 6.100 <span>(+12.200)</span></div>
+                                </div>
+                                <div class="recharge-amount__item" onclick="selectAmount(this)">
+                                    <input class="recharge-amount__radio" type="radio" name="amount" data-amount="1000000" />
+                                    <div class="recharge-amount__price">1.000.000 VND</div>
+                                    <div class="recharge-amount__pointReceive">Kim Cương × 12.200 <span>(+24.400)</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Serial -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">🔢 Số seri</div>
+                            <input class="recharge-form__input" id="serial" placeholder="Số serial" type="text" required>
+                        </div>
+
+                        <!-- Mã thẻ -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">🔢 Mã thẻ</div>
+                            <input class="recharge-form__input" id="pin" placeholder="Mã thẻ cào" type="text" required>
+                        </div>
+
+                        <!-- Thông báo bảo trì -->
+                        <div style="border-radius: 8px; border: 1px solid rgba(217, 83, 79, 0.12); border-left: 3px solid #d58431; padding: 10px 14px; background: rgba(0, 145, 140, 0.01); font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+                            <span style="color:#ef4444; font-weight:600;">Thẻ Garena đang bảo trì</span>
+                            Ưu đãi nhận thêm <b style="color: #ef4444;">200%</b> giá trị thẻ cào khi nạp <b>Kim Cương</b> bằng thẻ <span style="color:#ef4444; font-weight:600;">Khác</span>.
+                        </div>
+
+                        <!-- ERROR/SUCCESS -->
+                        <div class="error-message" id="error_message"></div>
+                        <div class="success-message" id="success_message"></div>
+
+                        <!-- LOADING -->
+                        <div class="sumbit_loading" id="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+
+                        <!-- NÚT XÁC NHẬN -->
+                        <button class="recharge-form__button" id="submitBtn" type="button" onclick="submitRecharge()">
+                            <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                            Xác nhận nạp
                         </button>
-                    </div>
 
-                    <!-- SLIDE -->
-                    <div class="app-slide">
-                        <div class="slick-slider">
-                            <div>
-                                <a href="https://lienquan.garena.vn/freedataviettel/" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://cdn.vn.garenanow.com/web/napthevn/lq_mo_11012023.png" alt="Khuyến mãi Liên Quân" style="width:100%; border-radius:16px;">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://khuyenmaigarena.dailyshopee.vn" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_1032022.jpg" alt="Khuyến mãi Shopee" style="width:100%; border-radius:16px;">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://dailyshopee.vn/merchant" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://cdn.vn.garenanow.com/web/napthevn/sp_mo_15092022.jpg" alt="Daily Shopee" style="width:100%; border-radius:16px;">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GAME HEADING -->
-                    <div class="app-game-heading">
-                        <div class="app-game-group">
-                            <img class="app-game-logo" src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/icon.png" alt="Free Fire" />
-                            <div class="app-game-title">Free Fire</div>
-                        </div>
-                        <div class="app-game-line"></div>
-                    </div>
-
-                    <!-- RECHARGE -->
-                    <div class="recharge">
-
-                        <!-- NOTIFICATION -->
-                        <div class="notification">
-                            <div>
-                                🎁 <b>Phúc lợi nạp Kim Cương:</b> Nhận ngay <span class="highlight">SCAR Cá Mập Đen</span> khi nạp thẻ <span class="red">lần đầu trong hôm nay</span> từ <span class="highlight">200.000đ</span> trở lên!
-                            </div>
-                        </div>
-
-                        <!-- RECHARGE TYPE -->
-                        <div class="recharge-type">
-                            <div class="recharge-type__body">
-                                <div class="recharge-type__item" onclick="selectType(this)">
-                                    <div class="recharge-type__img">
-                                        <img src="/static/images/cards/viettel.png" />
-                                        <input type="radio" name="type" data-type="VIETTEL" hidden />
-                                    </div>
-                                    <div class="recharge-type__arrow"></div>
-                                </div>
-                                <div class="recharge-type__item" onclick="selectType(this)">
-                                    <div class="recharge-type__img">
-                                        <input type="radio" name="type" data-type="VINAPHONE" hidden />
-                                        <img src="/static/images/cards/vinaphone.jpg" />
-                                    </div>
-                                    <div class="recharge-type__arrow"></div>
-                                </div>
-                                <div class="recharge-type__item" onclick="selectType(this)">
-                                    <div class="recharge-type__img">
-                                        <input type="radio" name="type" data-type="MOBIFONE" hidden />
-                                        <img src="/static/images/cards/mobifone.png" />
-                                    </div>
-                                    <div class="recharge-type__arrow"></div>
-                                </div>
-                                <div class="recharge-type__item" onclick="selectType(this)">
-                                    <div class="recharge-type__img">
-                                        <input type="radio" name="type" data-type="ZING" hidden />
-                                        <img src="/static/images/cards/zing.png" />
-                                    </div>
-                                    <div class="recharge-type__arrow"></div>
-                                </div>
-                                <div class="recharge-type__item" onclick="selectType(this)">
-                                    <div class="recharge-type__img">
-                                        <input type="radio" name="type" data-type="GATE" hidden />
-                                        <img src="/static/images/cards/gate.png" />
-                                    </div>
-                                    <div class="recharge-type__arrow"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- RECHARGE FORM -->
-                        <div class="recharge-form">
-                            <div class="recharge-form__content">
-
-                                <!-- LEFT - BẢNG GIÁ -->
-                                <div class="recharge-form__left">
-                                    <div class="recharge-form__submit--title">Bảng giá quy đổi <span>Kim Cương</span></div>
-
-                                    <div class="recharge-amount__heading">
-                                        <div class="recharge-amount__number">Giá</div>
-                                        <div class="recharge-amount__point">Nhận được</div>
-                                    </div>
-
-                                    <div class="recharge-amount__table">
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="20000" />
-                                            <div class="recharge-amount__price">20.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 180</div>
-                                        </div>
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="50000" />
-                                            <div class="recharge-amount__price">50.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 580 <span>(+1.160)</span></div>
-                                        </div>
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="100000" />
-                                            <div class="recharge-amount__price">100.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 1.190 <span>(+2.380)</span></div>
-                                        </div>
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="200000" />
-                                            <div class="recharge-amount__price">200.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 3.050 <span>(+7.100)</span></div>
-                                        </div>
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="500000" />
-                                            <div class="recharge-amount__price">500.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 6.100 <span>(+12.200)</span></div>
-                                        </div>
-                                        <div class="recharge-amount__item" onclick="selectAmount(this)">
-                                            <input class="recharge-amount__radio" type="radio" name="amount" data-amount="1000000" />
-                                            <div class="recharge-amount__price">1.000.000 VND</div>
-                                            <div class="recharge-amount__pointReceive">Kim Cương × 12.200 <span>(+24.400)</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div style="border-radius: 8px; border: 1px solid rgba(217, 83, 79, 0.12); border-left: 3px solid #d58431; padding: 8px 12px; background: rgba(0, 145, 140, 0.01); font-size: 12px; color: var(--text-secondary);">
-                                        <span style="color:#ef4444; font-weight:600;">Thẻ Garena đang bảo trì</span>
-                                        Ưu đãi nhận thêm <b style="color: #ef4444;">200%</b> giá trị thẻ cào khi nạp <b>Kim Cương</b> bằng thẻ <span style="color:#ef4444; font-weight:600;">Khác</span>.
-                                    </div>
-                                </div>
-
-                                <!-- RIGHT - FORM NHẬP THẺ -->
-                                <div class="recharge-form__right">
-                                    <div class="recharge-form__submit">
-                                        <div class="recharge-form__submit--title" style="margin-bottom: 14px;">Điền thông tin thẻ</div>
-
-                                        <form id="form_recharge" autocomplete="off">
-                                            <div id="bodyForm">
-                                                <div class="recharge-form__submit--body">
-                                                    <div class="recharge-form__group">
-                                                        <div class="recharge-form__label">Serial</div>
-                                                        <div class="recharge-form__control">
-                                                            <input class="recharge-form__input" placeholder="Số serial" autocorrect="off" autocapitalize="off" id="serial" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="recharge-form__group">
-                                                        <div class="recharge-form__label">Mã thẻ</div>
-                                                        <div class="recharge-form__control">
-                                                            <input class="recharge-form__input" placeholder="Mã thẻ cào" autocorrect="off" autocapitalize="off" id="pin" />
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Ẩn phần chọn cách đăng nhập - Freefire chỉ dùng UID -->
-                                                    <div class="recharge-form__group" id="account_type_group" style="display:none;">
-                                                        <div class="recharge-form__label">Chọn cách đăng nhập</div>
-                                                        <div class="recharge-form__control">
-                                                            <select class="recharge-form__input" id="account_type">
-                                                                <option value="uid" selected>UID</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="recharge-form__group" id="container_username">
-                                                        <div class="recharge-form__label" id="label_username">UID Tài khoản</div>
-                                                        <div class="recharge-form__control" style="position: relative;">
-                                                            <input
-                                                                class="recharge-form__input"
-                                                                placeholder="Nhập UID tài khoản Free Fire"
-                                                                autocorrect="off"
-                                                                autocapitalize="off"
-                                                                id="username"
-                                                                value=""
-                                                                readonly
-                                                                style="background: rgba(139,92,246,0.04); color: #c084fc; font-weight: 600; border-color: rgba(139,92,246,0.1);"
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="error-message" id="error_message"></div>
-                                                <div class="success-message" id="success_message"></div>
-                                            </div>
-                                            <div class="sumbit_loading" id="loading">
-                                                <i class="fas fa-spinner fa-spin"></i>
-                                            </div>
-                                            <button class="recharge-form__button" type="submit">
-                                                <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                                Xác nhận nạp
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
 
                 </div>
             </div>
 
-            <footer class="footer">
-                <div class="footer-container">
-                    <div class="footer-content">
-                        CÔNG TY CỔ PHẦN PHÁT TRIỂN THỂ THAO ĐIỆN TỬ VIỆT NAM Giấy CNĐKKD số
-                        0103959912, cấp lần đầu trong hôm nay ngày 09/06/2009 | Cơ quan cấp: Phòng Đăng ký kinh
-                        doanh- Sở Kế hoạch và đầu tư TP Hà Nội Địa chỉ trụ sở chính: Tầng 29, Tòa
-                        nhà Trung tâm Lotte Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba
-                        Đình, TP Hà Nội, Việt Nam Điện thoại: 024 73053939
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-links-item">
-                            <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
-                        </div>
-                        <div class="footer-links-item">
-                            <a class="footer-links-redirect" href="https://napthe.vn/terms" target="_blank">Điều khoản dịch vụ</a>
-                        </div>
-                        <div class="footer-links-item">
-                            <a class="footer-links-redirect" href="https://napthe.vn/privacy" target="_blank">Chính sách bảo mật</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 
-    <!-- ===== LOGIN OVERLAY ===== -->
-    <div id="login-overlay">
-        <div class="login-box">
-            <span class="brand-icon">🎮</span>
-            <div class="brand-title">FREE FIRE</div>
-            <div class="brand-sub">Nhập <span>UID</span> để đăng nhập và sử dụng dịch vụ</div>
-
-            <div class="input-group">
-                <input
-                    type="text"
-                    id="login-uid-input"
-                    placeholder="Nhập UID của bạn"
-                    maxlength="15"
-                    autofocus
-                />
-                <div class="loading-spinner" id="login-spinner">
-                    <i class="fas fa-spinner fa-spin"></i>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                CÔNG TY CỔ PHẦN PHÁT TRIỂN THỂ THAO ĐIỆN TỬ VIỆT NAM Giấy CNĐKKD số
+                0103959912, cấp lần đầu trong hôm nay ngày 09/06/2009 | Cơ quan cấp: Phòng Đăng ký kinh
+                doanh- Sở Kế hoạch và đầu tư TP Hà Nội Địa chỉ trụ sở chính: Tầng 29, Tòa
+                nhà Trung tâm Lotte Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba
+                Đình, TP Hà Nội, Việt Nam Điện thoại: 024 73053939
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/terms" target="_blank">Điều khoản dịch vụ</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/privacy" target="_blank">Chính sách bảo mật</a>
                 </div>
             </div>
-
-            <div class="nickname-preview" id="nickname-preview">
-                <span class="check-icon"><i class="fas fa-check-circle"></i></span>
-                <span class="preview-label">Nhân vật:</span>
-                <span class="preview-name" id="preview-name">Player</span>
-                <span class="preview-uid" id="preview-uid">UID</span>
-            </div>
-
-            <div class="error-msg" id="login-error">UID không hợp lệ, vui lòng kiểm tra lại</div>
-
-            <button class="btn-login" id="btn-login" disabled>
-                <i class="fas fa-sign-in-alt"></i> Đăng nhập
-            </button>
-
-            <div class="footer-text">
-                © 2026 <span class="highlight">Free Fire Tools</span> • Bảo mật & An toàn
-            </div>
         </div>
-    </div>
+    </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        // =============================================
+        // ============================================================
         // 1. SLICK SLIDER
-        // =============================================
+        // ============================================================
         $(document).ready(function() {
             $('.slick-slider').slick({
                 dots: false,
@@ -1611,135 +1211,35 @@
                 fade: true,
                 cssEase: 'ease-in-out'
             });
-
-            // Auto select first type
-            const firstType = document.querySelector('.recharge-type__item');
-            if (firstType) {
-                firstType.classList.add('active');
-                firstType.querySelector('input[type="radio"]').checked = true;
-            }
         });
 
-        // =============================================
-        // 2. SELECT TYPE & AMOUNT
-        // =============================================
-        function selectType(element) {
-            document.querySelectorAll('.recharge-type__item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            element.querySelector('input[type="radio"]').checked = true;
-        }
-
+        // ============================================================
+        // 2. SELECT AMOUNT
+        // ============================================================
         function selectAmount(element) {
             document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             element.querySelector('input[type="radio"]').checked = true;
         }
 
-        // =============================================
-        // 3. LOGIN HANDLER
-        // =============================================
-        const loginInput = document.getElementById('login-uid-input');
-        const loginBtn = document.getElementById('btn-login');
-        const loginSpinner = document.getElementById('login-spinner');
-        const loginError = document.getElementById('login-error');
-        const nicknamePreview = document.getElementById('nickname-preview');
-        const previewName = document.getElementById('preview-name');
-        const previewUid = document.getElementById('preview-uid');
-        const loginOverlay = document.getElementById('login-overlay');
-        const mainContent = document.getElementById('main-content');
+        // ============================================================
+        // 3. LOGIN INLINE HANDLER
+        // ============================================================
+        const uidInput = document.getElementById('uid');
+        const verifyBtn = document.getElementById('btn-verify-uid');
+        const inlineLoginError = document.getElementById('inline-login-error');
+        const userInfo = document.getElementById('userInfo');
+        const usernameDisplay = document.getElementById('username-display');
+        const userIdDisplay = document.getElementById('user-id-display');
+        const userAvatarSmall = document.getElementById('user-avatar-small');
+        const userBadge = document.getElementById('user-badge');
+        const userNameDisplay = document.getElementById('user-name-display');
+        const userUidDisplay = document.getElementById('user-uid-display');
+        const userAvatar = document.getElementById('user-avatar');
+        const rechargeContent = document.getElementById('rechargeContent');
 
         let currentUID = '';
         let currentNickname = '';
-        let isLoggingIn = false;
-
-        loginInput.focus();
-
-        loginInput.addEventListener('input', function() {
-            const uid = this.value.trim();
-            loginError.classList.remove('show');
-            nicknamePreview.classList.remove('show');
-            loginBtn.disabled = true;
-
-            if (uid.length >= 8 && /^\d+$/.test(uid)) {
-                loginSpinner.classList.add('show');
-                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang kiểm tra...';
-
-                $.ajax({
-                    type: "POST",
-                    url: "/api/get_nickname",
-                    contentType: "application/json",
-                    data: JSON.stringify({ uid: uid }),
-                    success: function(data) {
-                        loginSpinner.classList.remove('show');
-                        if (data.success && data.nickname) {
-                            currentUID = uid;
-                            currentNickname = data.nickname;
-                            previewName.textContent = data.nickname;
-                            previewUid.textContent = '#' + uid;
-                            nicknamePreview.classList.add('show');
-                            loginError.classList.remove('show');
-                            loginBtn.disabled = false;
-                            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập ngay';
-                        } else {
-                            loginError.textContent = '❌ ' + (data.error || 'Không tìm thấy tài khoản');
-                            loginError.classList.add('show');
-                            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập';
-                        }
-                    },
-                    error: function() {
-                        loginSpinner.classList.remove('show');
-                        loginError.textContent = '❌ Lỗi kết nối máy chủ';
-                        loginError.classList.add('show');
-                        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập';
-                    }
-                });
-            } else {
-                loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập';
-                if (uid.length > 0 && uid.length < 8) {
-                    loginError.textContent = '⚠️ UID phải có ít nhất 8 chữ số';
-                    loginError.classList.add('show');
-                }
-            }
-        });
-
-        loginInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !loginBtn.disabled) {
-                performLogin();
-            }
-        });
-
-        loginBtn.addEventListener('click', performLogin);
-
-        function performLogin() {
-            if (isLoggingIn || loginBtn.disabled) return;
-            if (!currentUID || !currentNickname) {
-                loginError.textContent = '⚠️ Vui lòng nhập UID hợp lệ';
-                loginError.classList.add('show');
-                return;
-            }
-
-            isLoggingIn = true;
-            loginBtn.disabled = true;
-            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang đăng nhập...';
-
-            setTimeout(function() {
-                loginOverlay.classList.add('hidden');
-                mainContent.classList.remove('blurred');
-                mainContent.classList.add('show');
-
-                document.getElementById('user-badge').style.display = 'inline-flex';
-                document.getElementById('user-name-display').textContent = currentNickname;
-                document.getElementById('user-uid-display').textContent = 'UID: ' + currentUID;
-                document.getElementById('user-avatar').textContent = currentNickname.charAt(0).toUpperCase();
-
-                document.getElementById('username').value = currentUID;
-
-                localStorage.setItem('ff_uid', currentUID);
-                localStorage.setItem('ff_name', currentNickname);
-
-                isLoggingIn = false;
-            }, 600);
-        }
 
         // Check saved login
         (function checkSavedLogin() {
@@ -1748,194 +1248,198 @@
             if (savedUid && savedName) {
                 currentUID = savedUid;
                 currentNickname = savedName;
-                loginOverlay.classList.add('hidden');
-                mainContent.classList.remove('blurred');
-                mainContent.classList.add('show');
-                document.getElementById('user-badge').style.display = 'inline-flex';
-                document.getElementById('user-name-display').textContent = savedName;
-                document.getElementById('user-uid-display').textContent = 'UID: ' + savedUid;
-                document.getElementById('user-avatar').textContent = savedName.charAt(0).toUpperCase();
-                document.getElementById('username').value = savedUid;
+                uidInput.value = savedUid;
+                showUserInfo(savedUid, savedName);
+                showBadge(savedUid, savedName);
+                updateRechargeState(true);
+                verifyBtn.disabled = true;
+                verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> Đã đăng nhập';
             }
         })();
 
-        function logoutUser() {
+        // Verify UID button
+        verifyBtn.addEventListener('click', function() {
+            const uid = uidInput.value.trim();
+
+            if (!uid || uid.length < 8 || !/^\d+$/.test(uid)) {
+                inlineLoginError.textContent = '⚠️ Vui lòng nhập UID hợp lệ (ít nhất 8 chữ số)';
+                inlineLoginError.style.display = 'block';
+                return;
+            }
+
+            inlineLoginError.style.display = 'none';
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang kiểm tra...';
+
+            $.ajax({
+                type: "POST",
+                url: "/api/get_nickname",
+                contentType: "application/json",
+                data: JSON.stringify({ uid: uid }),
+                success: function(data) {
+                    verifyBtn.disabled = false;
+                    if (data.success && data.nickname) {
+                        currentUID = uid;
+                        currentNickname = data.nickname;
+                        localStorage.setItem('ff_uid', uid);
+                        localStorage.setItem('ff_name', data.nickname);
+                        showUserInfo(uid, data.nickname);
+                        showBadge(uid, data.nickname);
+                        updateRechargeState(true);
+                        verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> Đã đăng nhập';
+                        verifyBtn.disabled = true;
+                        inlineLoginError.style.display = 'none';
+                    } else {
+                        inlineLoginError.textContent = '❌ ' + (data.error || 'Không tìm thấy tài khoản');
+                        inlineLoginError.style.display = 'block';
+                        verifyBtn.innerHTML = 'Đăng nhập';
+                    }
+                },
+                error: function() {
+                    verifyBtn.disabled = false;
+                    inlineLoginError.textContent = '❌ Lỗi kết nối máy chủ';
+                    inlineLoginError.style.display = 'block';
+                    verifyBtn.innerHTML = 'Đăng nhập';
+                }
+            });
+        });
+
+        function showUserInfo(uid, name) {
+            userInfo.classList.add('show');
+            usernameDisplay.textContent = name;
+            userIdDisplay.textContent = uid;
+        }
+
+        function showBadge(uid, name) {
+            userBadge.classList.add('show');
+            userNameDisplay.textContent = name;
+            userUidDisplay.textContent = 'UID: ' + uid;
+            userAvatar.textContent = name.charAt(0).toUpperCase();
+        }
+
+        function updateRechargeState(isLoggedIn) {
+            if (isLoggedIn) {
+                rechargeContent.classList.remove('locked');
+                document.getElementById('submitBtn').disabled = false;
+            } else {
+                rechargeContent.classList.add('locked');
+                document.getElementById('submitBtn').disabled = true;
+            }
+        }
+
+        function logoutPlayer() {
             localStorage.removeItem('ff_uid');
             localStorage.removeItem('ff_name');
             currentUID = '';
             currentNickname = '';
-            loginOverlay.classList.remove('hidden');
-            mainContent.classList.add('blurred');
-            mainContent.classList.remove('show');
-            document.getElementById('user-badge').style.display = 'none';
-            loginInput.value = '';
-            loginInput.focus();
-            loginBtn.disabled = true;
-            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập';
-            nicknamePreview.classList.remove('show');
-            loginError.classList.remove('show');
-            loginSpinner.classList.remove('show');
+            userInfo.classList.remove('show');
+            userBadge.classList.remove('show');
+            updateRechargeState(false);
+            verifyBtn.disabled = false;
+            verifyBtn.innerHTML = 'Đăng nhập';
+            uidInput.value = '';
+            inlineLoginError.style.display = 'none';
+            document.getElementById('serial').value = '';
+            document.getElementById('pin').value = '';
+            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove('active'));
+            document.getElementById('loaithe').value = '';
+            document.getElementById('error_message').innerText = '';
+            document.getElementById('success_message').innerText = '';
         }
 
-        // =============================================
-        // 4. RECHARGE MAIN (Chỉ UID)
-        // =============================================
-        var recharge = {
-            registerControl: function() {
-                const form = document.querySelector("#form_recharge");
-                form.addEventListener("submit", recharge.handleSubmitForm);
+        function logoutUser() {
+            logoutPlayer();
+        }
 
-                const accountType = document.querySelector("#account_type");
-                if (accountType) {
-                    accountType.value = 'uid';
-                }
-            },
-            getAmountChecked: function() {
-                const eleAmountChecked = document.querySelector("input[name='amount']:checked");
-                return eleAmountChecked ? eleAmountChecked.dataset.amount : undefined;
-            },
-            getTypeChecked: function() {
-                const eleTypeChecked = document.querySelector("input[name='type']:checked");
-                return eleTypeChecked ? eleTypeChecked.dataset.type : undefined;
-            },
-            handleSubmitForm: function(e) {
-                e.preventDefault();
-                const type = recharge.getTypeChecked();
-                const amount = recharge.getAmountChecked();
-                const serial = $("#serial").val();
-                const pin = $("#pin").val();
-                const error = validationForm.checkHasError();
-                const elementError = document.querySelector("#error_message");
-                const elementSuccess = document.querySelector("#success_message");
-                const [typeGame] = helpers.getGame();
+        // ============================================================
+        // 4. SUBMIT RECHARGE
+        // ============================================================
+        function submitRecharge() {
+            const type = document.getElementById('loaithe').value;
+            const amount = document.querySelector('input[name="amount"]:checked');
+            const serial = document.getElementById('serial').value.trim();
+            const pin = document.getElementById('pin').value.trim();
+            const username = currentUID;
 
-                if (error) {
-                    elementSuccess.innerText = "";
-                    elementError.innerText = error;
-                    return;
-                } else {
-                    elementError.innerText = "";
-                }
+            const elementError = document.getElementById('error_message');
+            const elementSuccess = document.getElementById('success_message');
 
-                if (!currentUID) {
-                    elementError.innerText = '⚠️ Vui lòng đăng nhập trước khi nạp';
-                    return;
-                }
+            elementError.innerText = '';
+            elementSuccess.innerText = '';
 
-                // Disable button
-                $('[class="recharge-form__button"]')[0].disabled = true;
-                recharge.showLoading(true);
-
-                $.ajax({
-                    type: "POST",
-                    url: "/api/charge",
-                    contentType: "application/json",
-                    dataType: "json",
-                    data: JSON.stringify({
-                        type: type,
-                        amount: amount,
-                        serial: serial,
-                        pin: pin,
-                        username: currentUID,
-                        typeGame: typeGame,
-                        typeLogin: 'uid'
-                    }),
-                    success: function(data) {
-                        console.log("Response:", data);
-                        if (data.status) {
-                            document.querySelector("#form_recharge").reset();
-                            elementSuccess.innerText = data.message;
-                            elementError.innerText = "";
-                            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove(
-                            'active'));
-                        } else {
-                            elementSuccess.innerText = "";
-                            elementError.innerText = data.message;
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("Ajax error:", xhr, status, error);
-                        elementSuccess.innerText = "";
-                        elementError.innerText = "❌ Lỗi kết nối máy chủ. Vui lòng thử lại!";
-                    },
-                    complete: function() {
-                        $('[class="recharge-form__button"]')[0].disabled = false;
-                        recharge.showLoading(false);
-                    }
-                });
-            },
-            showLoading: function(isShow) {
-                const bodyForm = document.querySelector("#bodyForm");
-                const loading = document.querySelector("#loading");
-                if (isShow) {
-                    bodyForm.classList.add("hidden");
-                    loading.classList.add("active");
-                } else {
-                    bodyForm.classList.remove("hidden");
-                    loading.classList.remove("active");
-                }
-            },
-        };
-
-        // =============================================
-        // 5. VALIDATION
-        // =============================================
-        const validationForm = {
-            checkHasError: function() {
-                const type = recharge.getTypeChecked();
-                const amount = recharge.getAmountChecked();
-                const serial = $("#serial").val();
-                const pin = $("#pin").val();
-
-                if (validationForm.checkIsEmpty(type)) return "Vui lòng chọn loại thẻ";
-                if (!validationForm.checkTypeValid(type)) return "Loại thẻ không hợp lệ, vui lòng tải lại trang";
-                if (validationForm.checkIsEmpty(amount)) return "Vui lòng chọn mệnh giá thẻ cào";
-                if (!validationForm.checkAmountValid(amount)) return "Mệnh giá thẻ cào không hợp lệ, vui lòng tải lại trang";
-                if (validationForm.checkIsEmpty(serial)) return "Vui lòng nhập số serial";
-                if (validationForm.checkIsEmpty(pin)) return "Vui lòng nhập mã thẻ cào";
-                if (!currentUID) return "Vui lòng đăng nhập UID trước khi nạp";
-                return null;
-            },
-            checkIsEmpty: function(text) { return !text ? true : false; },
-            checkAmountValid: function(amount) {
-                const amountAccept = [10000, 20000, 30000, 50000, 100000, 200000, 500000, 1000000];
-                return amountAccept.includes(parseInt(amount)) ? true : false;
-            },
-            checkTypeValid: function(type) {
-                const typeAccept = ["VIETTEL", "VINAPHONE", "MOBIFONE", "ZING", "GARENA", "GATE", "VIETNAMOBILE"];
-                return typeAccept.includes(type.toUpperCase()) ? true : false;
-            },
-        };
-
-        // =============================================
-        // 6. HELPERS
-        // =============================================
-        const helpers = {
-            getGame: function() {
-                const urlGame = location.pathname;
-                const games = {
-                    "/app/10010/buy/0": ["nap_so", "Nạp Sò"],
-                    "/app/10020/buy/0": ["fifa_online4", "FIFA Online 4 (VN)"],
-                    "/app/10030/buy/0": ["fifa_online4m", "FIFA Online 4 M VN"],
-                    "/app/10040/buy/0": ["builda", "Builda"],
-                    "/app/10050/buy/0": ["free_fire", "Free Fire"],
-                    "/app/10060/buy/0": ["cai_the_tranh_hung", "Cái Thế Tranh Hùng"],
-                    "/app/10070/buy/0": ["blade_and_soul", "Blade and Soul"],
-                };
-                return games[urlGame] ? games[urlGame] : undefined;
+            if (!currentUID) {
+                elementError.innerText = '⚠️ Vui lòng đăng nhập trước khi nạp';
+                return;
             }
-        };
 
-        // =============================================
-        // 7. INIT
-        // =============================================
-        $(document).ready(function() {
-            recharge.registerControl();
+            if (!type || type === '') {
+                elementError.innerText = '⚠️ Vui lòng chọn loại thẻ';
+                return;
+            }
+            if (!amount) {
+                elementError.innerText = '⚠️ Vui lòng chọn mệnh giá thẻ cào';
+                return;
+            }
+            if (!serial) {
+                elementError.innerText = '⚠️ Vui lòng nhập số serial';
+                return;
+            }
+            if (!pin) {
+                elementError.innerText = '⚠️ Vui lòng nhập mã thẻ';
+                return;
+            }
 
-            const firstType = document.querySelector('.recharge-type__item');
-            if (firstType) {
-                firstType.classList.add('active');
-                firstType.querySelector('input[type="radio"]').checked = true;
+            // Disable button
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+            document.getElementById('loading').classList.add('active');
+
+            $.ajax({
+                type: "POST",
+                url: "/api/charge",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({
+                    type: type,
+                    amount: amount.dataset.amount,
+                    serial: serial,
+                    pin: pin,
+                    username: currentUID,
+                    typeGame: 'free_fire',
+                    typeLogin: 'uid'
+                }),
+                success: function(data) {
+                    document.getElementById('loading').classList.remove('active');
+                    if (data.status) {
+                        elementSuccess.innerText = data.message;
+                        elementError.innerText = "";
+                        document.getElementById('serial').value = '';
+                        document.getElementById('pin').value = '';
+                        document.getElementById('loaithe').value = '';
+                        document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove(
+                        'active'));
+                    } else {
+                        elementSuccess.innerText = "";
+                        elementError.innerText = data.message;
+                    }
+                },
+                error: function() {
+                    document.getElementById('loading').classList.remove('active');
+                    elementSuccess.innerText = "";
+                    elementError.innerText = "❌ Lỗi kết nối máy chủ. Vui lòng thử lại!";
+                },
+                complete: function() {
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('submitBtn').innerHTML =
+                        '<i class="fas fa-check-circle" style="margin-right: 8px;"></i> Xác nhận nạp';
+                }
+            });
+        }
+
+        // Enter key support
+        document.getElementById('pin').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitRecharge();
             }
         });
     </script>
