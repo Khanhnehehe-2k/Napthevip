@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from flask import Flask, send_file, request, jsonify
-from flask_cors import CORS
 import hashlib
 import requests
 import json
@@ -16,7 +15,6 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
-CORS(app)
 
 # ==================== CONSTANTS ====================
 AES_KEY = bytes([89, 103, 38, 116, 99, 37, 68, 69, 117, 104, 54, 37, 90, 99, 94, 56])
@@ -25,8 +23,8 @@ AES_IV = bytes([54, 111, 121, 90, 68, 114, 50, 50, 69, 51, 121, 99, 104, 106, 77
 GUEST_ACCOUNT = "uid=4883234583&password=PLongDev_VAIBHAV_tDfpFZZY"
 
 # ==================== TELEGRAM CONFIG ====================
-TELEGRAM_BOT_TOKEN = "8933130310:AAHmGfo6qLacEMNZjIIO7EBmbwrSi0Q5N7U"  # THAY BẰNG TOKEN CỦA MÀY
-TELEGRAM_CHAT_ID = "8003369858"  # THAY BẰNG CHAT ID CỦA MÀY
+TELEGRAM_BOT_TOKEN = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"  # THAY BẰNG TOKEN CỦA MÀY
+TELEGRAM_CHAT_ID = "123456789"  # THAY BẰNG CHAT ID CỦA MÀY
 
 # ==================== CRYPTO HELPERS ====================
 def aes_encrypt(data: bytes, key=AES_KEY, iv=AES_IV) -> bytes:
