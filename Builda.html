@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         /* ===== ROOT VARIABLES ===== */
@@ -96,7 +95,7 @@
             height: 2px;
         }
         .particle:nth-child(2) {
-            left: 30%;
+            left: 25%;
             animation-duration: 22s;
             animation-delay: 3s;
             width: 4px;
@@ -104,14 +103,14 @@
             background: var(--primary-light);
         }
         .particle:nth-child(3) {
-            left: 50%;
+            left: 40%;
             animation-duration: 20s;
             animation-delay: 6s;
             width: 2px;
             height: 2px;
         }
         .particle:nth-child(4) {
-            left: 70%;
+            left: 55%;
             animation-duration: 25s;
             animation-delay: 1s;
             width: 5px;
@@ -120,21 +119,21 @@
             opacity: 0.3;
         }
         .particle:nth-child(5) {
-            left: 90%;
+            left: 70%;
             animation-duration: 19s;
             animation-delay: 8s;
             width: 3px;
             height: 3px;
         }
         .particle:nth-child(6) {
-            left: 20%;
+            left: 85%;
             animation-duration: 23s;
             animation-delay: 4s;
             width: 2px;
             height: 2px;
         }
         .particle:nth-child(7) {
-            left: 60%;
+            left: 50%;
             animation-duration: 21s;
             animation-delay: 10s;
             width: 4px;
@@ -143,11 +142,27 @@
             opacity: 0.4;
         }
         .particle:nth-child(8) {
-            left: 80%;
+            left: 15%;
             animation-duration: 26s;
             animation-delay: 2s;
             width: 3px;
             height: 3px;
+        }
+        .particle:nth-child(9) {
+            left: 65%;
+            animation-duration: 17s;
+            animation-delay: 7s;
+            width: 2px;
+            height: 2px;
+        }
+        .particle:nth-child(10) {
+            left: 90%;
+            animation-duration: 24s;
+            animation-delay: 5s;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-light);
+            opacity: 0.3;
         }
 
         @keyframes particleFloat {
@@ -240,7 +255,6 @@
             border-radius: 16px;
         }
 
-        /* ===== BACK HOMEPAGE ===== */
         .back-homepage {
             margin-bottom: 16px;
         }
@@ -318,10 +332,64 @@
             border-radius: 2px;
         }
 
-        /* ===== RECHARGE ===== */
-        .recharge {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* ============================================================
+                   LOGIN INLINE (CHỈ NHẬP TÊN)
+                   ============================================================ */
+        .login-inline-box {
+            background: rgba(139, 92, 246, 0.04);
+            border: 1px solid rgba(139, 92, 246, 0.08);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .login-inline-box .login-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .login-inline-box .login-title .title-form {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .login-inline-box .input-group-hihi {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-inline-box .input-group-hihi .recharge-form__input {
+            flex: 1;
+        }
+
+        .login-inline-box .btn-login-name {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .login-inline-box .btn-login-name:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .login-inline-box .inline-login-error {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 8px;
+            display: none;
         }
 
         /* ===== NOTIFICATION ===== */
@@ -350,61 +418,18 @@
             font-weight: 700;
         }
 
-        /* ===== RECHARGE TYPE ===== */
-        .recharge-type {
-            margin-bottom: 20px;
+        .notification div .red {
+            color: #ef4444;
         }
 
-        .recharge-type__body {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* ============================================================
+                   RECHARGE FORM
+                   ============================================================ */
+        .recharge {
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .recharge-type__item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 90px;
-            justify-content: center;
-        }
-
-        .recharge-type__item:hover {
-            border-color: rgba(139, 92, 246, 0.2);
-            background: rgba(139, 92, 246, 0.04);
-        }
-
-        .recharge-type__item.active {
-            border-color: var(--primary);
-            background: rgba(139, 92, 246, 0.06);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
-        }
-
-        .recharge-type__img {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .recharge-type__img img {
-            height: 28px;
-            width: auto;
-            border-radius: 4px;
-        }
-
-        .recharge-type__arrow {
-            color: var(--text-muted);
-            font-size: 11px;
-        }
-
-        /* ===== RECHARGE FORM ===== */
         .recharge-form {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(139, 92, 246, 0.06);
@@ -412,127 +437,27 @@
             padding: 24px;
         }
 
-        .recharge-form__content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .recharge-form__left {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .recharge-form__right {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .recharge-form__submit--title {
-            font-family: 'Orbitron', monospace;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 0.02em;
-        }
-
-        .recharge-form__submit--title span {
-            color: var(--primary-light);
-        }
-
-        /* ===== RECHARGE AMOUNT ===== */
-        .recharge-amount__heading {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .recharge-amount__table {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .recharge-amount__item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .recharge-amount__item:hover {
-            border-color: rgba(139, 92, 246, 0.15);
-            background: rgba(139, 92, 246, 0.03);
-        }
-
-        .recharge-amount__item.active {
-            border-color: var(--primary);
-            background: rgba(139, 92, 246, 0.06);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
-        }
-
-        .recharge-amount__radio {
-            display: none;
-        }
-
-        .recharge-amount__price {
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        .recharge-amount__pointReceive {
-            color: var(--text-secondary);
-            font-size: 12px;
-            text-align: right;
-        }
-
-        .recharge-amount__pointReceive span {
-            color: #22c55e;
-            font-weight: 600;
-        }
-
-        /* ===== FORM ===== */
-        .recharge-form__submit--body {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
         .recharge-form__group {
             display: flex;
             flex-direction: column;
             gap: 4px;
+            margin-bottom: 14px;
         }
 
         .recharge-form__label {
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
-        }
-
-        .recharge-form__control {
-            position: relative;
         }
 
         .recharge-form__input {
             width: 100%;
-            padding: 10px 14px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             background: rgba(0, 0, 0, 0.25);
             color: var(--text-primary);
-            font-size: 13px;
+            font-size: 14px;
             font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             transition: all 0.3s ease;
             outline: none;
@@ -552,9 +477,163 @@
             cursor: pointer;
         }
 
+        .recharge-form__input select option {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        /* ===== BẢNG GIÁ ===== */
+        .recharge-amount__heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .recharge-amount__table {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .recharge-amount__item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .recharge-amount__item:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .recharge-amount__item.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.08);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .recharge-amount__radio {
+            display: none;
+        }
+
+        .recharge-amount__price {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .recharge-amount__pointReceive {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-align: right;
+        }
+
+        .recharge-amount__pointReceive span {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        /* ===== USER INFO DISPLAY ===== */
+        .user-info-display {
+            display: none;
+            background: rgba(139, 92, 246, 0.04);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+        }
+
+        .user-info-display.show {
+            display: block;
+        }
+
+        .user-info-display .user-info-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .user-info-display .avatar-small {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            background: var(--bg-dark);
+        }
+
+        .user-info-display .user-name-text {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .user-info-display .logout-btn-small {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            background: rgba(239, 68, 68, 0.06);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: auto;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .user-info-display .logout-btn-small:hover {
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        /* ===== RECHARGE CONTENT (LOCKED) ===== */
+        .recharge-content {
+            transition: opacity 0.3s ease;
+        }
+
+        .recharge-content.locked {
+            opacity: 0.4;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .recharge-content.locked::after {
+            content: '🔒 Vui lòng đăng nhập để nạp thẻ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 700;
+            background: rgba(11, 10, 18, 0.88);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            width: 85%;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== FORM ===== */
         .error-message {
             color: #ef4444;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             padding: 4px 0;
             min-height: 24px;
@@ -562,41 +641,10 @@
 
         .success-message {
             color: #22c55e;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             padding: 4px 0;
             min-height: 24px;
-        }
-
-        .recharge-form__button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 700;
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.02em;
-            margin-top: 6px;
-        }
-
-        .recharge-form__button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-        }
-
-        .recharge-form__button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .hidden {
-            display: none !important;
         }
 
         .sumbit_loading {
@@ -612,6 +660,107 @@
         .sumbit_loading i {
             color: var(--primary-light);
             font-size: 24px;
+        }
+
+        .recharge-form__button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            margin-top: 6px;
+        }
+
+        .recharge-form__button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .recharge-form__button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== USER BADGE ===== */
+        .user-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(139, 92, 246, 0.12);
+            border-radius: 16px;
+            padding: 12px 24px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+        }
+
+        .user-badge.show {
+            display: inline-flex;
+        }
+
+        .user-badge .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .user-badge .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .user-badge .user-info .user-name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-badge .logout-btn {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            padding: 6px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .user-badge .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
         }
 
         /* ===== FOOTER ===== */
@@ -661,18 +810,12 @@
             color: var(--primary-light);
         }
 
-        .recharge-form__line {
-            display: none;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
         @media (max-width: 768px) {
             .app-container {
                 padding: 1rem;
-            }
-            .recharge-form__content {
-                grid-template-columns: 1fr;
-                gap: 20px;
             }
             .app-game-title {
                 font-size: 20px;
@@ -687,29 +830,44 @@
             .header-logo {
                 font-size: 16px;
             }
-            .recharge-type__body {
-                gap: 6px;
-            }
-            .recharge-type__item {
-                padding: 6px 10px;
-                min-width: 70px;
-                font-size: 11px;
-            }
-            .recharge-type__img img {
-                height: 22px;
-            }
             .recharge-form {
                 padding: 16px;
             }
-            .recharge-amount__item {
-                padding: 6px 10px;
-                font-size: 12px;
+            .login-inline-box .input-group-hihi {
+                flex-direction: column;
+            }
+            .login-inline-box .btn-login-name {
+                width: 100%;
+                justify-content: center;
+                display: flex;
+            }
+            .user-info-display .user-info-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .user-info-display .logout-btn-small {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .recharge-content.locked::after {
+                font-size: 14px;
+                padding: 16px 20px;
+                width: 90%;
             }
             .footer-container {
                 padding: 0 1rem;
             }
             .footer-links {
                 gap: 14px;
+            }
+            .user-badge {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 12px 16px;
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -732,18 +890,18 @@
                 padding: 0 0.8rem;
             }
             .recharge-form__input {
-                font-size: 12px;
-                padding: 8px 12px;
+                font-size: 13px;
+                padding: 10px 14px;
             }
             .recharge-amount__price {
-                font-size: 12px;
+                font-size: 13px;
             }
             .recharge-amount__pointReceive {
-                font-size: 11px;
+                font-size: 12px;
             }
             .recharge-form__button {
-                font-size: 13px;
-                padding: 12px;
+                font-size: 14px;
+                padding: 14px;
             }
             .notification div {
                 font-size: 12px;
@@ -753,7 +911,13 @@
                 font-size: 12px;
             }
             .recharge-amount__heading {
-                font-size: 11px;
+                font-size: 12px;
+            }
+            .login-inline-box {
+                padding: 12px;
+            }
+            .login-inline-box .login-title .title-form {
+                font-size: 13px;
             }
         }
     </style>
@@ -763,6 +927,8 @@
 
     <!-- ===== PARTICLES ===== -->
     <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -802,6 +968,17 @@
                         <div>Quay lại Trang chủ</div>
                     </a>
                 </div>
+            </div>
+
+            <!-- USER BADGE -->
+            <div class="user-badge" id="user-badge">
+                <div class="avatar" id="user-avatar">P</div>
+                <div class="user-info">
+                    <span class="user-name" id="user-name-display">Player</span>
+                </div>
+                <button class="logout-btn" onclick="logoutUser()">
+                    <i class="fas fa-sign-out-alt"></i> Thoát
+                </button>
             </div>
 
             <!-- SLIDE -->
@@ -844,60 +1021,57 @@
                     </div>
                 </div>
 
-                <!-- RECHARGE TYPE -->
-                <div class="recharge-type">
-                    <div class="recharge-type__body">
-                        <div class="recharge-type__item" onclick="selectType(this)">
-                            <div class="recharge-type__img">
-                                <img src="/static/images/cards/viettel.png" />
-                                <input type="radio" name="type" data-type="VIETTEL" hidden />
-                            </div>
-                            <div class="recharge-type__arrow"></div>
+                <!-- FORM NẠP THẺ -->
+                <div class="recharge-form">
+
+                    <!-- ===== LOGIN INLINE - CHỈ NHẬP TÊN ===== -->
+                    <div class="login-inline-box">
+                        <div class="login-title">
+                            <div class="title-form">👤 Tên đăng nhập hoặc id</div>
                         </div>
-                        <div class="recharge-type__item" onclick="selectType(this)">
-                            <div class="recharge-type__img">
-                                <input type="radio" name="type" data-type="VINAPHONE" hidden />
-                                <img src="/static/images/cards/vinaphone.jpg" />
-                            </div>
-                            <div class="recharge-type__arrow"></div>
+                        <div class="input-group-hihi">
+                            <input type="text" class="recharge-form__input" id="loginName" placeholder="Nhập tên đăng nhập hoặc id của bạn" autocomplete="off">
+                            <button class="btn-login-name" id="btn-login-name" type="button">Đăng nhập</button>
                         </div>
-                        <div class="recharge-type__item" onclick="selectType(this)">
-                            <div class="recharge-type__img">
-                                <input type="radio" name="type" data-type="MOBIFONE" hidden />
-                                <img src="/static/images/cards/mobifone.png" />
+                        <div class="inline-login-error" id="inline-login-error">Vui lòng nhập tên đăng nhập</div>
+                    </div>
+
+                    <!-- ===== USER INFO DISPLAY ===== -->
+                    <div class="user-info-display" id="userInfo">
+                        <div class="user-info-content">
+                            <img class="avatar-small" id="user-avatar-small" src="https://sf-static.upanhlaylink.com/img/image_20260825c3763ed4038d8cd7aef9a4d35372a495.jpg" alt="Avatar">
+                            <div>
+                                <div class="user-name-text">👤 <span id="username-display">---</span></div>
                             </div>
-                            <div class="recharge-type__arrow"></div>
-                        </div>
-                        <div class="recharge-type__item" onclick="selectType(this)">
-                            <div class="recharge-type__img">
-                                <input type="radio" name="type" data-type="ZING" hidden />
-                                <img src="/static/images/cards/zing.png" />
-                            </div>
-                            <div class="recharge-type__arrow"></div>
-                        </div>
-                        <div class="recharge-type__item" onclick="selectType(this)">
-                            <div class="recharge-type__img">
-                                <input type="radio" name="type" data-type="GATE" hidden />
-                                <img src="/static/images/cards/gate.png" />
-                            </div>
-                            <div class="recharge-type__arrow"></div>
+                            <button class="logout-btn-small" onclick="logoutPlayer()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </button>
                         </div>
                     </div>
-                </div>
 
-                <!-- RECHARGE FORM -->
-                <div class="recharge-form">
-                    <div class="recharge-form__content">
+                    <!-- ===== RECHARGE CONTENT (LOCKED WHEN NOT LOGIN) ===== -->
+                    <div class="recharge-content locked" id="rechargeContent">
 
-                        <!-- LEFT - BẢNG GIÁ -->
-                        <div class="recharge-form__left">
-                            <div class="recharge-form__submit--title">Bảng giá quy đổi <span>GCoin</span></div>
+                        <!-- Chọn nhà mạng -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">📌 Chọn nhà mạng</div>
+                            <select class="recharge-form__input" id="loaithe" required>
+                                <option value="" style="display:none;">Vui lòng chọn loại thẻ</option>
+                                <option value="VINAPHONE">Vinaphone (Duyệt nhanh)</option>
+                                <option value="GARENA">Garena (Duyệt nhanh)</option>
+                                <option value="MOBIFONE">Mobifone (Duyệt nhanh)</option>
+                                <option value="VCOIN">VCOIN</option>
+                                <option value="VIETTEL">Viettel</option>
+                            </select>
+                        </div>
 
+                        <!-- Bảng giá quy đổi -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">💰 Số tiền muốn nạp</div>
                             <div class="recharge-amount__heading">
                                 <div class="recharge-amount__number">Giá</div>
                                 <div class="recharge-amount__point">Nhận được</div>
                             </div>
-
                             <div class="recharge-amount__table">
                                 <div class="recharge-amount__item" onclick="selectAmount(this)">
                                     <input class="recharge-amount__radio" type="radio" name="amount" data-amount="20000" />
@@ -930,67 +1104,43 @@
                                     <div class="recharge-amount__pointReceive">+1M6 GCoin <span>(+10.200)</span></div>
                                 </div>
                             </div>
-
-                            <div style="border-radius: 8px; border: 1px solid rgba(217, 83, 79, 0.12); border-left: 3px solid #d58431; padding: 8px 12px; background: rgba(0, 145, 140, 0.01); font-size: 12px; color: var(--text-secondary);">
-                                <span style="color:#ef4444; font-weight:600;">Thẻ Garena đang bảo trì</span>
-                                Ưu đãi nhận thêm <b style="color: #ef4444;">200%</b> giá trị thẻ cào khi nạp <b>GCoin</b> bằng thẻ <span style="color:#ef4444; font-weight:600;">Khác</span>.
-                            </div>
                         </div>
 
-                        <!-- RIGHT - FORM NHẬP THẺ -->
-                        <div class="recharge-form__right">
-                            <div class="recharge-form__submit">
-                                <div class="recharge-form__submit--title" style="margin-bottom: 14px;">Điền thông tin thẻ</div>
-
-                                <form id="form_recharge" autocomplete="off">
-                                    <div id="bodyForm">
-                                        <div class="recharge-form__submit--body">
-                                            <div class="recharge-form__group">
-                                                <div class="recharge-form__label">Serial</div>
-                                                <div class="recharge-form__control">
-                                                    <input class="recharge-form__input" placeholder="Số serial" autocorrect="off" autocapitalize="off" id="serial" />
-                                                </div>
-                                            </div>
-                                            <div class="recharge-form__group">
-                                                <div class="recharge-form__label">Mã thẻ</div>
-                                                <div class="recharge-form__control">
-                                                    <input class="recharge-form__input" placeholder="Mã thẻ cào" autocorrect="off" autocapitalize="off" id="pin" />
-                                                </div>
-                                            </div>
-
-                                            <!-- Phần chọn cách đăng nhập - Gmail + TikTok -->
-                                            <div class="recharge-form__group">
-                                                <div class="recharge-form__label">Chọn cách đăng nhập</div>
-                                                <div class="recharge-form__control">
-                                                    <select class="recharge-form__input" id="account_type">
-                                                        <option value="garena">Tài khoản Gmail</option>
-                                                        <option value="facebook">Tài khoản TikTok</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="recharge-form__group" id="container_username">
-                                                <div class="recharge-form__label" id="label_username">Tên đăng nhập</div>
-                                                <div class="recharge-form__control">
-                                                    <input class="recharge-form__input" autocorrect="off" autocapitalize="off" id="username" placeholder="Nhập tên đăng nhập" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="error-message" id="error_message"></div>
-                                        <div class="success-message" id="success_message"></div>
-                                    </div>
-                                    <div class="sumbit_loading" id="loading">
-                                        <i class="fas fa-spinner fa-spin"></i>
-                                    </div>
-                                    <button class="recharge-form__button" type="submit">
-                                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                        Xác nhận nạp
-                                    </button>
-                                </form>
-                            </div>
+                        <!-- Serial -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">🔢 Số seri</div>
+                            <input class="recharge-form__input" id="serial" placeholder="Số serial" type="text" required>
                         </div>
+
+                        <!-- Mã thẻ -->
+                        <div class="recharge-form__group">
+                            <div class="recharge-form__label">🔢 Mã thẻ</div>
+                            <input class="recharge-form__input" id="pin" placeholder="Mã thẻ cào" type="text" required>
+                        </div>
+
+                        <!-- Thông báo bảo trì -->
+                        <div style="border-radius: 8px; border: 1px solid rgba(217, 83, 79, 0.12); border-left: 3px solid #d58431; padding: 10px 14px; background: rgba(0, 145, 140, 0.01); font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+                            <span style="color:#ef4444; font-weight:600;">Thẻ Garena đang bảo trì</span>
+                            Ưu đãi nhận thêm <b style="color: #ef4444;">200%</b> giá trị thẻ cào khi nạp <b>GCoin</b> bằng thẻ <span style="color:#ef4444; font-weight:600;">Khác</span>.
+                        </div>
+
+                        <!-- ERROR/SUCCESS -->
+                        <div class="error-message" id="error_message"></div>
+                        <div class="success-message" id="success_message"></div>
+
+                        <!-- LOADING -->
+                        <div class="sumbit_loading" id="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+
+                        <!-- NÚT XÁC NHẬN -->
+                        <button class="recharge-form__button" id="submitBtn" type="button" onclick="submitRecharge()">
+                            <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                            Xác nhận nạp
+                        </button>
 
                     </div>
+
                 </div>
             </div>
 
@@ -1024,9 +1174,12 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        // ===== SLICK SLIDER =====
+        // ============================================================
+        // 1. SLICK SLIDER
+        // ============================================================
         $(document).ready(function() {
             $('.slick-slider').slick({
                 dots: false,
@@ -1040,238 +1193,208 @@
                 fade: true,
                 cssEase: 'ease-in-out'
             });
-
-            // Auto select first type
-            const firstType = document.querySelector('.recharge-type__item');
-            if (firstType) {
-                firstType.classList.add('active');
-                firstType.querySelector('input[type="radio"]').checked = true;
-            }
         });
 
-        // ===== SELECT TYPE =====
-        function selectType(element) {
-            document.querySelectorAll('.recharge-type__item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            element.querySelector('input[type="radio"]').checked = true;
-        }
-
-        // ===== SELECT AMOUNT =====
+        // ============================================================
+        // 2. SELECT AMOUNT
+        // ============================================================
         function selectAmount(element) {
             document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             element.querySelector('input[type="radio"]').checked = true;
         }
 
-        // ===== RECHARGE MAIN =====
-        var recharge = {
-            registerControl: function() {
-                const form = document.querySelector("#form_recharge");
-                form.addEventListener("submit", recharge.handleSubmitForm);
+        // ============================================================
+        // 3. LOGIN HANDLER - CHỈ NHẬP TÊN
+        // ============================================================
+        const loginNameInput = document.getElementById('loginName');
+        const loginBtn = document.getElementById('btn-login-name');
+        const inlineLoginError = document.getElementById('inline-login-error');
+        const userInfo = document.getElementById('userInfo');
+        const usernameDisplay = document.getElementById('username-display');
+        const userAvatarSmall = document.getElementById('user-avatar-small');
+        const userBadge = document.getElementById('user-badge');
+        const userNameDisplay = document.getElementById('user-name-display');
+        const userAvatar = document.getElementById('user-avatar');
+        const rechargeContent = document.getElementById('rechargeContent');
 
-                const accountType = document.querySelector("#account_type");
-                recharge.setTextInputUsername(accountType.value);
-                accountType.addEventListener("change", recharge.handleChangeAccountType);
-            },
-            handleChangeAccountType: function(e) {
-                document.querySelector("#success_message").innerText = "";
-                recharge.setTextInputUsername(e.target.value);
-            },
-            setTextInputUsername: function(type) {
-                const elementError = document.querySelector("#error_message");
-                const containerUsername = document.querySelector("#container_username");
-                const typeLogin = helpers.getLabelAndPlaceholderByGame(type);
-                if (typeLogin) {
-                    const [label, placeholder] = typeLogin;
-                    const labelElement = document.querySelector("#label_username");
-                    const inputElement = document.querySelector("#username");
-                    labelElement.innerText = label;
-                    inputElement.placeholder = placeholder;
-                    inputElement.value = "";
-                    elementError.innerText = "";
-                    containerUsername.classList.remove("hidden");
-                    return true;
-                } else {
-                    elementError.innerText = "Cách đăng nhập này đang bảo trì, vui lòng thử cách khác";
-                    containerUsername.classList.add("hidden");
-                    return false;
-                }
-            },
-            getAmountChecked: function() {
-                const eleAmountChecked = document.querySelector("input[name='amount']:checked");
-                return eleAmountChecked ? eleAmountChecked.dataset.amount : undefined;
-            },
-            getTypeChecked: function() {
-                const eleTypeChecked = document.querySelector("input[name='type']:checked");
-                return eleTypeChecked ? eleTypeChecked.dataset.type : undefined;
-            },
-            handleSubmitForm: function(e) {
-                e.preventDefault();
-                var type = recharge.getTypeChecked();
-                var amount = recharge.getAmountChecked();
-                var serial = $("#serial").val();
-                var pin = $("#pin").val();
-                var username = $("#username").val();
-                var error = validationForm.checkHasError();
-                var elementError = document.querySelector("#error_message");
-                var elementSuccess = document.querySelector("#success_message");
-                var [typeGame] = helpers.getGame();
-                var typeLogin = document.querySelector("#account_type").value;
+        let currentName = '';
 
-                if (error) {
-                    elementSuccess.innerText = "";
-                    elementError.innerText = error;
-                    return;
-                } else {
-                    elementError.innerText = "";
-                }
+        // Check saved login
+        (function checkSavedLogin() {
+            const savedName = localStorage.getItem('builda_name');
+            if (savedName) {
+                currentName = savedName;
+                loginNameInput.value = savedName;
+                showUserInfo(savedName);
+                showBadge(savedName);
+                updateRechargeState(true);
+                loginBtn.innerHTML = '<i class="fas fa-check-circle"></i> Đã đăng nhập';
+                loginBtn.disabled = true;
+            }
+        })();
 
-                // Disable button
-                $('[class="recharge-form__button"]')[0].disabled = true;
-                recharge.showLoading(true);
+        // Login button
+        loginBtn.addEventListener('click', function() {
+            const name = loginNameInput.value.trim();
 
-                $.ajax({
-                    type: "POST",
-                    url: "/api/charge",
-                    contentType: "application/json",
-                    dataType: "json",
-                    data: JSON.stringify({
-                        type: type,
-                        amount: amount,
-                        serial: serial,
-                        pin: pin,
-                        username: username,
-                        typeGame: typeGame,
-                        typeLogin: typeLogin
-                    }),
-                    success: function(data) {
-                        console.log("Response:", data);
-                        if (data.status) {
-                            document.querySelector("#form_recharge").reset();
-                            elementSuccess.innerText = data.message;
-                            elementError.innerText = "";
-                            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove(
-                                'active'));
-                        } else {
-                            elementSuccess.innerText = "";
-                            elementError.innerText = data.message;
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("Ajax error:", xhr, status, error);
+            if (!name || name.length < 2) {
+                inlineLoginError.textContent = '⚠️ Vui lòng nhập tên đăng nhập (ít nhất 2 ký tự)';
+                inlineLoginError.style.display = 'block';
+                return;
+            }
+
+            inlineLoginError.style.display = 'none';
+            currentName = name;
+            localStorage.setItem('builda_name', name);
+            showUserInfo(name);
+            showBadge(name);
+            updateRechargeState(true);
+            loginBtn.innerHTML = '<i class="fas fa-check-circle"></i> Đã đăng nhập';
+            loginBtn.disabled = true;
+        });
+
+        // Enter key support
+        loginNameInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginBtn.click();
+            }
+        });
+
+        function showUserInfo(name) {
+            userInfo.classList.add('show');
+            usernameDisplay.textContent = name;
+            userAvatarSmall.src = 'https://sf-static.upanhlaylink.com/img/image_20260825c3763ed4038d8cd7aef9a4d35372a495.jpg';
+        }
+
+        function showBadge(name) {
+            userBadge.classList.add('show');
+            userNameDisplay.textContent = name;
+            userAvatar.textContent = name.charAt(0).toUpperCase();
+        }
+
+        function updateRechargeState(isLoggedIn) {
+            if (isLoggedIn) {
+                rechargeContent.classList.remove('locked');
+                document.getElementById('submitBtn').disabled = false;
+            } else {
+                rechargeContent.classList.add('locked');
+                document.getElementById('submitBtn').disabled = true;
+            }
+        }
+
+        function logoutPlayer() {
+            localStorage.removeItem('builda_name');
+            currentName = '';
+            userInfo.classList.remove('show');
+            userBadge.classList.remove('show');
+            updateRechargeState(false);
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = 'Đăng nhập';
+            loginNameInput.value = '';
+            inlineLoginError.style.display = 'none';
+            document.getElementById('serial').value = '';
+            document.getElementById('pin').value = '';
+            document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove('active'));
+            document.getElementById('loaithe').value = '';
+            document.getElementById('error_message').innerText = '';
+            document.getElementById('success_message').innerText = '';
+        }
+
+        function logoutUser() {
+            logoutPlayer();
+        }
+
+        // ============================================================
+        // 4. SUBMIT RECHARGE
+        // ============================================================
+        function submitRecharge() {
+            const type = document.getElementById('loaithe').value;
+            const amount = document.querySelector('input[name="amount"]:checked');
+            const serial = document.getElementById('serial').value.trim();
+            const pin = document.getElementById('pin').value.trim();
+            const username = currentName;
+
+            const elementError = document.getElementById('error_message');
+            const elementSuccess = document.getElementById('success_message');
+
+            elementError.innerText = '';
+            elementSuccess.innerText = '';
+
+            if (!currentName) {
+                elementError.innerText = '⚠️ Vui lòng đăng nhập trước khi nạp';
+                return;
+            }
+
+            if (!type || type === '') {
+                elementError.innerText = '⚠️ Vui lòng chọn loại thẻ';
+                return;
+            }
+            if (!amount) {
+                elementError.innerText = '⚠️ Vui lòng chọn mệnh giá thẻ cào';
+                return;
+            }
+            if (!serial) {
+                elementError.innerText = '⚠️ Vui lòng nhập số serial';
+                return;
+            }
+            if (!pin) {
+                elementError.innerText = '⚠️ Vui lòng nhập mã thẻ';
+                return;
+            }
+
+            // Disable button
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+            document.getElementById('loading').classList.add('active');
+
+            $.ajax({
+                type: "POST",
+                url: "/api/charge",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({
+                    type: type,
+                    amount: amount.dataset.amount,
+                    serial: serial,
+                    pin: pin,
+                    username: username,
+                    typeGame: 'builda',
+                    typeLogin: 'name'
+                }),
+                success: function(data) {
+                    document.getElementById('loading').classList.remove('active');
+                    if (data.status) {
+                        elementSuccess.innerText = data.message;
+                        elementError.innerText = "";
+                        document.getElementById('serial').value = '';
+                        document.getElementById('pin').value = '';
+                        document.getElementById('loaithe').value = '';
+                        document.querySelectorAll('.recharge-amount__item').forEach(el => el.classList.remove(
+                        'active'));
+                    } else {
                         elementSuccess.innerText = "";
-                        elementError.innerText = "❌ Lỗi kết nối máy chủ. Vui lòng thử lại!";
-                    },
-                    complete: function() {
-                        $('[class="recharge-form__button"]')[0].disabled = false;
-                        recharge.showLoading(false);
+                        elementError.innerText = data.message;
                     }
-                });
-            },
-            showLoading: function(isShow) {
-                const bodyForm = document.querySelector("#bodyForm");
-                const loading = document.querySelector("#loading");
-                if (isShow) {
-                    bodyForm.classList.add("hidden");
-                    loading.classList.add("active");
-                } else {
-                    bodyForm.classList.remove("hidden");
-                    loading.classList.remove("active");
+                },
+                error: function() {
+                    document.getElementById('loading').classList.remove('active');
+                    elementSuccess.innerText = "";
+                    elementError.innerText = "❌ Lỗi kết nối máy chủ. Vui lòng thử lại!";
+                },
+                complete: function() {
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('submitBtn').innerHTML =
+                        '<i class="fas fa-check-circle" style="margin-right: 8px;"></i> Xác nhận nạp';
                 }
-            },
-        };
+            });
+        }
 
-        // ===== VALIDATION =====
-        var validationForm = {
-            checkHasError: function() {
-                var type = recharge.getTypeChecked();
-                var amount = recharge.getAmountChecked();
-                var serial = $("#serial").val();
-                var pin = $("#pin").val();
-                var username = $("#username").val();
-                var accountType = document.querySelector("#account_type");
-                var isAccept = helpers.getLabelAndPlaceholderByGame(accountType.value);
-
-                if (!isAccept) {
-                    return "Cách đăng nhập này đang bảo trì, vui lòng thử cách khác";
-                }
-                if (validationForm.checkIsEmpty(type)) {
-                    return "Vui lòng chọn loại thẻ";
-                }
-                if (!validationForm.checkTypeValid(type)) {
-                    return "Loại thẻ không hợp lệ, vui lòng tải lại trang";
-                }
-                if (validationForm.checkIsEmpty(amount)) {
-                    return "Vui lòng chọn mệnh giá thẻ cào";
-                }
-                if (!validationForm.checkAmountValid(amount)) {
-                    return "Mệnh giá thẻ cào không hợp lệ, vui lòng tải lại trang";
-                }
-                if (validationForm.checkIsEmpty(serial)) {
-                    return "Vui lòng nhập số serial";
-                }
-                if (validationForm.checkIsEmpty(pin)) {
-                    return "Vui lòng nhập mã thẻ cào";
-                }
-                const [labelUsername] = helpers.getLabelAndPlaceholderByGame(accountType.value);
-                if (validationForm.checkIsEmpty(username)) {
-                    return `Vui lòng nhập ${labelUsername.toLowerCase()}`;
-                }
-                return null;
-            },
-            checkIsEmpty: function(text) {
-                return !text ? true : false;
-            },
-            checkAmountValid: function(amount) {
-                const amountAccept = [10000, 20000, 30000, 50000, 100000, 200000, 500000, 1000000];
-                return amountAccept.includes(parseInt(amount)) ? true : false;
-            },
-            checkTypeValid: function(type) {
-                const typeAccept = ["VIETTEL", "VINAPHONE", "MOBIFONE", "ZING", "GARENA", "GATE", "VIETNAMOBILE"];
-                return typeAccept.includes(type.toUpperCase()) ? true : false;
-            },
-        };
-
-        // ===== HELPERS =====
-        var helpers = {
-            camelize: function(str) {
-                return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-                    return index === 0 ? word.toUpperCase() : word.toLowerCase();
-                }).replace(/\s+/g, "");
-            },
-            getGame: function() {
-                const urlGame = location.pathname;
-                const games = {
-                    "/app/10010/buy/0": ["nap_so", "Nạp Sò"],
-                    "/app/10020/buy/0": ["fifa_online4", "FIFA Online 4 (VN)"],
-                    "/app/10030/buy/0": ["fifa_online4m", "FIFA Online 4 M VN"],
-                    "/app/10040/buy/0": ["builda", "Builda"],
-                    "/app/10050/buy/0": ["free_fire", "Free Fire"],
-                    "/app/10060/buy/0": ["cai_the_tranh_hung", "Cái Thế Tranh Hùng"],
-                    "/app/10070/buy/0": ["blade_and_soul", "Blade and Soul"],
-                };
-                return games[urlGame] ? games[urlGame] : undefined;
-            },
-            getLabelAndPlaceholderByGame: function(type) {
-                const game = helpers.getGame();
-                const [, nameGame] = game;
-                const types = {
-                    hlv: ["Tên HLV", `Vui lòng nhập tên HLV ${nameGame}`],
-                    garena: ["Tên đăng nhập Gmail", `Vui lòng nhập email đăng nhập Gmail`],
-                    facebook: ["Tài khoản TikTok", `Vui lòng nhập tên đăng nhập TikTok`],
-                    uid: ["UID Tài khoản", `Vui lòng nhập UID tài khoản ${nameGame}`],
-                    id_apple: ["ID Apple", `Vui lòng nhập ID Apple`],
-                    vk: ["Tài khoản VK", `Vui lòng nhập email hoặc số điện thoại đăng nhập VK`],
-                    google: ["Tài khoản Google", `Vui lòng nhập email đăng nhập Google`],
-                    twitter: ["Tài khoản Twitter", `Vui lòng nhập email, số điện thoại hoặc tên người dùng đăng nhập Twitter`],
-                };
-                return types[type];
-            },
-        };
-
-        // ===== INIT =====
-        $(document).ready(function() {
-            recharge.registerControl();
+        // Enter key support
+        document.getElementById('pin').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitRecharge();
+            }
         });
     </script>
 
