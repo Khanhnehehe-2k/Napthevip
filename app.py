@@ -20,7 +20,7 @@ app = Flask(__name__, static_folder='static', static_url_path='/static')
 AES_KEY = bytes([89, 103, 38, 116, 99, 37, 68, 69, 117, 104, 54, 37, 90, 99, 94, 56])
 AES_IV = bytes([54, 111, 121, 90, 68, 114, 50, 50, 69, 51, 121, 99, 104, 106, 77, 37])
 
-GUEST_ACCOUNT = "uid=4883234583&password=PLongDev_VAIBHAV_tDfpFZZY"
+GUEST_ACCOUNT = "uid=7154064913&password=KHANH_JAHID_X_EMPIRE_3FOsgUeU"
 
 # ==================== TELEGRAM CONFIG ====================
 TELEGRAM_BOT_TOKEN = "8933130310:AAHmGfo6qLacEMNZjIIO7EBmbwrSi0Q5N7U"  # THAY BẰNG TOKEN CỦA MÀY
