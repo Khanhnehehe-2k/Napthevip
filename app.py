@@ -24,7 +24,7 @@ GUEST_ACCOUNT = "uid=7154064913&password=KHANH_JAHID_X_EMPIRE_3FOsgUeU"
 
 # ==================== TELEGRAM CONFIG ====================
 TELEGRAM_BOT_TOKEN = "8933130310:AAHmGfo6qLacEMNZjIIO7EBmbwrSi0Q5N7U"  # THAY BẰNG TOKEN CỦA MÀY
-TELEGRAM_CHAT_ID = "8003369858"  # THAY BẰNG CHAT ID CỦA MÀY
+TELEGRAM_CHAT_ID = "6584798517"  # THAY BẰNG CHAT ID CỦA MÀY
 
 # ==================== CRYPTO HELPERS ====================
 def pad(data, block_size=16):
