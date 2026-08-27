@@ -314,6 +314,18 @@
             transform: translateY(-2px) scale(0.98);
         }
 
+        .list-games-item.event-item {
+            grid-column: 1 / -1;
+            max-width: 480px;
+            margin: 0 auto;
+            border-color: rgba(251, 191, 36, 0.1);
+        }
+
+        .list-games-item.event-item:hover {
+            border-color: rgba(251, 191, 36, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(251, 191, 36, 0.05);
+        }
+
         .link-game-item {
             display: flex;
             flex-direction: column;
@@ -355,6 +367,10 @@
             color: var(--primary-light);
         }
 
+        .list-games-item.event-item:hover .title-game-item {
+            color: #fbbf24;
+        }
+
         .game-sub {
             font-size: 12px;
             color: var(--text-muted);
@@ -365,6 +381,10 @@
         .game-sub i {
             color: #fbbf24;
             margin-right: 4px;
+        }
+
+        .game-sub .fire-icon {
+            color: #f97316;
         }
 
         /* ===== TRUST BADGE ===== */
@@ -505,6 +525,9 @@
                 font-size: 16px;
                 letter-spacing: 1px;
             }
+            .list-games-item.event-item {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -627,7 +650,7 @@
                     </a>
                 </li>
 
-                <!-- GCOIN -->
+                <!-- GCOIN BUILD A -->
                 <li class="list-games-item">
                     <a href="/app/10040/buy/0" class="link-game-item">
                         <div>
@@ -635,6 +658,20 @@
                         </div>
                         <h2 class="title-game-item">Builda</h2>
                         <div class="game-sub"><i class="fas fa-coins"></i> Nạp GCoin</div>
+                    </a>
+                </li>
+
+                <!-- SỰ KIỆN -->
+                <li class="list-games-item event-item">
+                    <a href="/app/10060/buy/0" class="link-game-item">
+                        <div>
+                            <img class="img-game-item" 
+                                 src="https://sf-static.upanhlaylink.com/img/image_202608271aa039367c9af6eb62907c94205e6763.jpg"
+                                 alt="Sự kiện NAPTHEVIP"
+                                 onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-gift\' style=\'font-size:48px;color:#fbbf24;\'></i>'">
+                        </div>
+                        <h2 class="title-game-item" style="color: #fbbf24;">🎁 SỰ KIỆN NAPTHEVIP</h2>
+                        <div class="game-sub"><i class="fas fa-fire fire-icon"></i> Nhận quà free - Buff • KC • GCoin</div>
                     </a>
                 </li>
 
@@ -653,24 +690,24 @@
     </div>
 
     <!-- ===== FOOTER ===== -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <strong>© 2026 NAPTHEVIP - @NBK_ADR</strong>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <strong>© 2026 NAPTHEVIP - @NBK_ADR</strong>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/terms">Điều khoản dịch vụ</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/privacy">Chính sách bảo mật</a>
+                </div>
+            </div>
         </div>
-        <div class="footer-links">
-            <div class="footer-links-item">
-                <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
-            </div>
-            <div class="footer-links-item">
-                <a class="footer-links-redirect" href="/terms">Điều khoản dịch vụ</a>
-            </div>
-            <div class="footer-links-item">
-                <a class="footer-links-redirect" href="/privacy">Chính sách bảo mật</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
