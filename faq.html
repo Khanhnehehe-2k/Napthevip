@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=0">
+    <title>Câu hỏi thường gặp - NAPTHEVIP</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-glow: rgba(139, 92, 246, 0.2);
+            --bg-dark: #0b0a12;
+            --text-primary: #f0ecff;
+            --text-secondary: #a8a0c0;
+            --text-muted: #6a6480;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== AMBIENT BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 60% 50% at 30% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+            z-index: -2;
+            pointer-events: none;
+            animation: ambientFloat 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(-3%, -2%) scale(1.03);
+            }
+        }
+
+        /* ===== PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-duration: 18s; animation-delay: 0s; width: 2px; height: 2px; }
+        .particle:nth-child(2) { left: 25%; animation-duration: 22s; animation-delay: 3s; width: 4px; height: 4px; background: var(--primary-light); }
+        .particle:nth-child(3) { left: 40%; animation-duration: 20s; animation-delay: 6s; width: 2px; height: 2px; }
+        .particle:nth-child(4) { left: 55%; animation-duration: 25s; animation-delay: 1s; width: 5px; height: 5px; background: var(--primary-light); opacity: 0.3; }
+        .particle:nth-child(5) { left: 70%; animation-duration: 19s; animation-delay: 8s; width: 3px; height: 3px; }
+        .particle:nth-child(6) { left: 85%; animation-duration: 23s; animation-delay: 4s; width: 2px; height: 2px; }
+        .particle:nth-child(7) { left: 50%; animation-duration: 21s; animation-delay: 10s; width: 4px; height: 4px; background: var(--primary-light); opacity: 0.4; }
+        .particle:nth-child(8) { left: 15%; animation-duration: 26s; animation-delay: 2s; width: 3px; height: 3px; }
+        .particle:nth-child(9) { left: 65%; animation-duration: 17s; animation-delay: 7s; width: 2px; height: 2px; }
+        .particle:nth-child(10) { left: 90%; animation-duration: 24s; animation-delay: 5s; width: 4px; height: 4px; background: var(--primary-light); opacity: 0.3; }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(11, 10, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.06);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+        }
+
+        .header-logo::before {
+            content: '💎 ';
+            -webkit-text-fill-color: initial;
+        }
+
+        .header-contact {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .header-contact:hover {
+            color: var(--primary-light);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        /* ===== BACK HOMEPAGE ===== */
+        .back-homepage {
+            margin-bottom: 20px;
+        }
+
+        .back-homepage-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .back-homepage-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-homepage-link:hover {
+            color: var(--primary-light);
+        }
+
+        .back-arrow-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .back-arrow-left {
+            width: 8px;
+            height: 8px;
+            border-left: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        /* ===== PAGE HEADING ===== */
+        .page-heading {
+            text-align: center;
+            margin: 10px 0 35px;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.04em;
+        }
+
+        .page-title i {
+            -webkit-text-fill-color: initial;
+            color: #fbbf24;
+            margin-right: 8px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        .page-line {
+            width: 60px;
+            height: 3px;
+            margin: 12px auto 0;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            border-radius: 2px;
+        }
+
+        /* ===== QUICK STATS ===== */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(139, 92, 246, 0.15);
+            background: rgba(139, 92, 246, 0.03);
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ===== FAQ LIST ===== */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(139, 92, 246, 0.12);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 16px;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .faq-question-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .faq-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .faq-question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .faq-arrow {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: transform 0.3s ease;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+            color: var(--primary-light);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 22px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 800px;
+            padding: 0 22px 20px 22px;
+        }
+
+        .faq-answer-content {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+            border-top: 1px solid rgba(139, 92, 246, 0.06);
+            padding-top: 18px;
+        }
+
+        .faq-answer-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        .faq-answer-content ul li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer-content ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: 700;
+        }
+
+        .faq-answer-content .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 6px 0;
+        }
+
+        .faq-answer-content .step-num {
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .faq-answer-content .step-text {
+            color: var(--text-secondary);
+            padding-top: 2px;
+        }
+
+        .highlight-box {
+            background: rgba(139, 92, 246, 0.04);
+            border-left: 3px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 12px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary-light);
+        }
+
+        .highlight-box .green {
+            color: #22c55e;
+        }
+
+        .highlight-box .yellow {
+            color: #fbbf24;
+        }
+
+        .highlight-box .red {
+            color: #ef4444;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .trust-grid .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.04);
+        }
+
+        .trust-grid .trust-item i {
+            color: #22c55e;
+            font-size: 18px;
+        }
+
+        .trust-grid .trust-item span {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .payment-grid .payment-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.04);
+        }
+
+        .payment-grid .payment-item i {
+            font-size: 18px;
+        }
+
+        .payment-grid .payment-item span {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(11, 10, 18, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 2px solid rgba(139, 92, 246, 0.3);
+            padding: 35px 0 25px;
+            margin-top: 50px;
+            box-shadow: 0 -8px 40px rgba(139, 92, 246, 0.08);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            color: #c084fc;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 10px 0;
+            text-shadow: 0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(139, 92, 246, 0.1);
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.06), transparent);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-content:hover {
+            text-shadow: 0 0 60px rgba(139, 92, 246, 0.5), 0 0 120px rgba(139, 92, 246, 0.2);
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links-item {
+            list-style: none;
+        }
+
+        .footer-links-redirect {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .footer-links-redirect:hover {
+            color: #c084fc;
+            background: rgba(139, 92, 246, 0.08);
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 1rem;
+            }
+            .page-title {
+                font-size: 22px;
+            }
+            .page-subtitle {
+                font-size: 14px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .header-logo {
+                font-size: 16px;
+            }
+            .faq-question {
+                padding: 14px 16px;
+            }
+            .faq-question-text {
+                font-size: 14px;
+            }
+            .faq-answer {
+                padding: 0 16px;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 16px 16px 16px;
+            }
+            .quick-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            .stat-number {
+                font-size: 22px;
+            }
+            .stat-label {
+                font-size: 11px;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                padding: 0 1rem;
+            }
+            .footer-links {
+                gap: 14px;
+            }
+            .footer-content {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+            .faq-icon {
+                width: 30px;
+                height: 30px;
+                min-width: 30px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 18px;
+            }
+            .header-logo {
+                font-size: 14px;
+            }
+            .header-contact {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .header-container {
+                padding: 0 0.8rem;
+            }
+            .faq-question-text {
+                font-size: 13px;
+            }
+            .faq-answer-content {
+                font-size: 14px;
+            }
+            .quick-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat-item:last-child {
+                grid-column: 1 / -1;
+            }
+            .stat-number {
+                font-size: 20px;
+            }
+            .footer-content {
+                font-size: 14px;
+                letter-spacing: 0.5px;
+                padding: 8px 0;
+            }
+            .footer-links-redirect {
+                font-size: 12px;
+            }
+            .back-homepage-link {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="/" style="text-decoration: none;">
+                <div class="header-logo">NAP THEVIP</div>
+            </a>
+            <div>
+                <a class="header-contact" href="https://hotro.garena.vn/" target="_blank">
+                    <i class="fas fa-headset" style="margin-right: 6px;"></i>
+                    Chăm sóc khách hàng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="app-container">
+
+        <!-- BACK HOMEPAGE -->
+        <div class="back-homepage">
+            <div class="back-homepage-container">
+                <a class="back-homepage-link" href="/">
+                    <div class="back-arrow-container">
+                        <div class="back-arrow-left"></div>
+                    </div>
+                    <div>Quay lại Trang chủ</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- PAGE HEADING -->
+        <div class="page-heading">
+            <div class="page-title">
+                <i class="fas fa-question-circle"></i> CÂU HỎI THƯỜNG GẶP
+            </div>
+            <div class="page-subtitle">
+                Những thắc mắc phổ biến về cách nạp thẻ và độ uy tín của NAPTHEVIP
+            </div>
+            <div class="page-line"></div>
+        </div>
+
+        <!-- QUICK STATS -->
+        <div class="quick-stats">
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Giao dịch thành công</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99.8%</div>
+                <div class="stat-label">Tỷ lệ hài lòng</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Đánh giá từ người dùng</div>
+            </div>
+        </div>
+
+        <!-- FAQ LIST -->
+        <div class="faq-list">
+
+            <!-- FAQ 1: Cách lấy UID -->
+            <div class="faq-item active">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question-left">
+                        <div class="faq-icon"><i class="fas fa-id-card"></i></div>
+                        <span class="faq-question-text">Cách lấy UID Free Fire để nạp thẻ?</span>
+                    </div>
+                    <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>UID (User ID)</strong> là mã số định danh duy nhất của tài khoản Free Fire. Bạn có thể lấy UID bằng 2 cách sau:</p>
+
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-text"><strong>Cách 1: Trong game Free Fire</strong></div>
+                        </div>
+                        <ul>
+                            <li>Mở game Free Fire → Vào <strong>Hồ sơ</strong> (avatar của bạn)</li>
+                            <li>Nhìn vào dòng chữ <strong>"ID: ..."</strong> hoặc <strong>"UID: ..."</strong></li>
+                            <li>Bấm vào biểu tượng <strong>Sao chép</strong> 📋 để lưu lại</li>
+                        </ul>
+
+                        <div class="step" style="margin-top: 12px;">
+                            <div class="step-num">2</div>
+                            <div class="step-text"><strong>Cách 2: Trên trang web Garena</strong></div>
+                        </div>
+                        <ul>
+                            <li>Truy cập <a href="https://ff.garena.vn/" target="_blank" style="color: var(--primary-light);">ff.garena.vn</a></li>
+                            <li>Đăng nhập tài khoản Garena của bạn</li>
+                            <li>Vào mục <strong>Hồ sơ</strong> và sao chép UID hiển thị</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <strong>⚠️ Lưu ý quan trọng:</strong><br>
+                            • UID là dãy số từ <strong>8-15 chữ số</strong><br>
+                            • Không nhập <strong>nhầm UID</strong> vì Kim Cương sẽ được nạp vào tài khoản đó<br>
+                            • UID của bạn là <strong>duy nhất</strong> và không thay đổi
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2: Uy tín của NAPTHEVIP -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question-left">
+                        <div class="faq-icon"><i class="fas fa-shield-alt"></i></div>
+                        <span class="faq-question-text">NAPTHEVIP có uy tín không? Có bị lừa đảo không?</span>
+                    </div>
+                    <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>NAPTHEVIP hoàn toàn uy tín và được cộng đồng game thủ tin tưởng.</strong> Dưới đây là những lý do bạn có thể yên tâm:</p>
+
+                        <div class="trust-grid">
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hơn 500.000+ giao dịch thành công</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kết nối trực tiếp với hệ thống Garena</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kim Cương được cộng trong vòng 1-3 phút</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Đội ngũ CSKH 24/7 hỗ trợ nhiệt tình</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Bảo mật tuyệt đối thông tin tài khoản</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Nạp tối thiểu chỉ từ 20.000 VND</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box" style="margin-top: 16px;">
+                            <strong><i class="fas fa-star yellow"></i> Cam kết từ NAPTHEVIP:</strong><br>
+                            <span class="green">✅</span> Hoàn tiền 100% nếu Kim Cương không về trong vòng <strong>10 phút</strong><br>
+                            <span class="green">✅</span> Hỗ trợ khách hàng qua <strong>Zalo, Telegram, Email</strong> 24/7<br>
+                            <span class="green">✅</span> Không lưu trữ bất kỳ thông tin thẻ cào của khách hàng<br>
+                            <span class="green">✅</span> Đã được <strong>hàng nghìn game thủ</strong> tin dùng và đánh giá cao
+                        </div>
+
+                        <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap;">
+                            <span style="background: rgba(251, 191, 36, 0.1); color: #fbbf24; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                                <i class="fas fa-star"></i> 4.9/5 sao
+                            </span>
+                            <span style="background: rgba(34, 197, 94, 0.1); color: #22c55e; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                                <i class="fas fa-thumbs-up"></i> 99.8% hài lòng
+                            </span>
+                            <span style="background: rgba(139, 92, 246, 0.1); color: var(--primary-light); padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                                <i class="fas fa-rocket"></i> Nạp nhanh nhất 1 phút
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3: Các bước nạp thẻ -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question-left">
+                        <div class="faq-icon"><i class="fas fa-coins"></i></div>
+                        <span class="faq-question-text">Hướng dẫn nạp Kim Cương Free Fire các bước?</span>
+                    </div>
+                    <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Chỉ với <strong>3 bước đơn giản</strong>, bạn đã có thể nạp Kim Cương cho tài khoản Free Fire:</p>
+
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-text"><strong>Đăng nhập UID</strong> — Nhập chính xác UID của bạn vào ô "ID Game"</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-text"><strong>Chọn mệnh giá</strong> — Chọn nhà mạng và số tiền cần nạp (từ 20.000đ)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-text"><strong>Nhập thông tin thẻ</strong> — Điền Serial và Mã thẻ cào → Bấm "Xác nhận nạp"</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>🎯 Lưu ý:</strong><br>
+                            • Kiểm tra <strong>UID</strong> thật kỹ trước khi nạp<br>
+                            • Nhập đúng <strong>Serial và Mã thẻ</strong> (phân biệt chữ hoa/thường)<br>
+                            • Sau khi nạp thành công, <strong>Kim Cương sẽ về</strong> trong vòng 1-3 phút
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4: Thẻ cào bị lỗi -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question-left">
+                        <div class="faq-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <span class="faq-question-text">Thẻ cào bị lỗi / không nạp được thì phải làm sao?</span>
+                    </div>
+                    <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Khi gặp lỗi khi nạp thẻ, bạn hãy thử các bước sau:</p>
+                        <ul>
+                            <li>Kiểm tra lại <strong>Serial và Mã thẻ</strong> đã nhập đúng chưa</li>
+                            <li>Kiểm tra <strong>nhà mạng</strong> đã chọn đúng với loại thẻ chưa</li>
+                            <li>Thử <strong>tải lại trang</strong> và thực hiện lại thao tác</li>
+                            <li>Nếu vẫn lỗi, hãy <strong>liên hệ CSKH</strong> để được hỗ trợ</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>📞 Hỗ trợ 24/7:</strong><br>
+                            • Zalo: <span class="green">+84 123 456 789</span><br>
+                            • Telegram: <span class="green">@napthevip_support</span><br>
+                            • Email: <span class="green">support@napthevip.vn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 5: Các hình thức thanh toán -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question-left">
+                        <div class="faq-icon"><i class="fas fa-credit-card"></i></div>
+                        <span class="faq-question-text">NAPTHEVIP hỗ trợ những hình thức thanh toán nào?</span>
+                    </div>
+                    <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>NAPTHEVIP hỗ trợ nhiều hình thức thanh toán để bạn lựa chọn:</p>
+                        <div class="payment-grid">
+                            <div class="payment-item">
+                                <i class="fas fa-sim-card" style="color: #fbbf24;"></i>
+                                <span>Thẻ cào điện thoại</span>
+                            </div>
+                            <div class="payment-item">
+                                <i class="fas fa-university" style="color: #34d399;"></i>
+                                <span>Chuyển khoản ngân hàng</span>
+                            </div>
+                            <div class="payment-item">
+                                <i class="fas fa-qrcode" style="color: #60a5fa;"></i>
+                                <span>QR Code VietQR</span>
+                            </div>
+                            <div class="payment-item">
+                                <i class="fas fa-wallet" style="color: #a78bfa;"></i>
+                                <span>Ví điện tử Momo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <strong>© 2026 NAPTHEVIP - @NBK_ADR</strong>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="/faq">Câu hỏi thường gặp</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/terms" target="_blank">Điều khoản dịch vụ</a>
+                </div>
+                <div class="footer-links-item">
+                    <a class="footer-links-redirect" href="https://napthe.vn/privacy" target="_blank">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // TOGGLE FAQ
+        // ============================================================
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+
+            // Đóng tất cả các mục khác
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Nếu mục chưa active thì mở nó
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

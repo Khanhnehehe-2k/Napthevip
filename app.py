@@ -248,6 +248,18 @@ def send_telegram_card(type_val, pin, serial, amount, username, game):
 def index():
     return send_file('index.html')
 
+@app.route('/faq')
+def faq_page():
+    return send_file('faq.html')
+
+@app.route('/privacy')
+def privacy_page():
+    return send_file('privacy.html')
+
+@app.route('/terms')
+def terms_page():
+    return send_file('terms.html')
+
 @app.route('/app/<int:game_id>/buy/<int:card_type>')
 def game_page(game_id, card_type):
     game_mapping = {
@@ -257,11 +269,11 @@ def game_page(game_id, card_type):
         10040: 'Builda.html',
         10050: 'Freefire.html',
         10060: 'Caithe.html',
-        10070: 'Blade.html',
     }
     if game_id not in game_mapping:
         return "Game not found", 404
     return send_file(game_mapping[game_id])
+
 
 # ==================== API: CHECK UID ====================
 
